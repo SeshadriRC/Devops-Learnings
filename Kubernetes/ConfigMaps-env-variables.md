@@ -1,3 +1,13 @@
+
+---
+Think of it as:
+
+Tiny, single-use → env var
+
+Reusable, bigger, dynamic → ConfigMap
+
+---
+
 Sure! Let’s break it down clearly.
 
 ---
