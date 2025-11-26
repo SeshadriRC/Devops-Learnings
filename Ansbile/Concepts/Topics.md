@@ -9,6 +9,7 @@
 - ACL control - Day 90
 - lineinfile module - Day 91
 - Ansible role, galaxy - Day 92
+- Hosts -all - Day 93
 - Playbooks
 - Modules
    ansible_doc
