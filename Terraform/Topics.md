@@ -1,1 +1,2 @@
+- Provider.tf file
 - VPC creating using terraform
