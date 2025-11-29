@@ -9,6 +9,7 @@
 ## Course
 
 **Modules** - aws_instance, aws_security_group, local_file, aws_key_pair, tls_private_key
+
 **Datasource** - aws_vpc,
 
 1. Variables
