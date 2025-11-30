@@ -4,6 +4,7 @@
 - VPC creating using terraform [Day 94](https://github.com/SeshadriRC/Devops/blob/main/100-days-of-Devops/Day94%3A%20Create%20VPC%20Using%20Terraform.md)
 - Security group creation using terraform, Datasources - [Day 95](https://github.com/SeshadriRC/Devops/blob/main/100-days-of-Devops/Day95%3A%20Create%20Security%20Group%20Using%20Terraform.md)
 - EC2 instance creating using terraform - [Day 96](https://github.com/SeshadriRC/Devops/blob/main/100-days-of-Devops/Day96%3A%20Create%20EC2%20Instance%20Using%20Terraform.md)
+- IAM policy creation - [Day 97](https://github.com/SeshadriRC/Devops/blob/main/100-days-of-Devops/Day97%3A%20Create%20IAM%20Policy%20Using%20Terraform.md)
 
 
 ## Course
