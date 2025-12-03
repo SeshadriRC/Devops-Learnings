@@ -1,1 +1,1 @@
-- [Deploy 3-tier application in EKS cluster](#https://github.com/SeshadriRC/three-tier-architecture-demo-project)
+- [Deploy 3-tier application in EKS cluster](https://github.com/SeshadriRC/three-tier-architecture-demo-project)
