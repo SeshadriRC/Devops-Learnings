@@ -1,1 +1,1 @@
-Below is the quick points we need to remember
+**Below is the quick points we need to remember**
