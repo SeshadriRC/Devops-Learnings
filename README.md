@@ -1,6 +1,6 @@
 ## 🚀 DevOps Learning Repository
 
-**This repository contains my hands-on DevOps practice exercises, covering AWS, Terraform, Kubernetes, and other cloud technologies.**
+**This repository contains my hands-on DevOps practice exercises, covering AWS, Terraform, Ansbile,Docker,Kubernetes, and other cloud technologies.**
 
 ### 🔥 What’s Inside?
 - Step-by-step implementations  
