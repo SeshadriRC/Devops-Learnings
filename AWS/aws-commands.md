@@ -1,7 +1,7 @@
 
-[EC2](#ec2)
-[Cloudwatch-alarms](#cloudwatch-alarms)
-[Sns-topics](#Sns-topics)
+- [EC2](#ec2)
+- [Cloudwatch-alarms](#cloudwatch-alarms)
+- [Sns-topics](#Sns-topics)
 
 # EC2
 
