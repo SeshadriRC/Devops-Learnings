@@ -6,5 +6,5 @@
 - Step-by-step implementations  
 - Real-world cloud infrastructure examples  
 - Notes and explanations for quick revision  
-- AWS + Terraform + Kubernetes/OpenShift practice tasks  
+
 
