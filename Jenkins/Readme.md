@@ -1,0 +1,2 @@
+- To setup a CI/CD pipeline we need jenkins server
+- Jenkins should be hosted on separate server. for eg: Jenkins server
