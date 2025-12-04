@@ -25,12 +25,16 @@
 
 https://medium.com/@manojkumar_41904/understanding-init-containers-and-sidecar-containers-in-kubernetes-ca94bec10a7b
 
+# Course
+
+[CKAD](#CKAD)
+
+## CKAD
+
 ## Objectives
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ce1176f4-b080-4f17-bce2-16cc32069ff5" />
 
-
-## Course - CKAD
 
 1. Scheduler
 ```
