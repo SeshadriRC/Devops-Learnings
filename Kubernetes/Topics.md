@@ -27,7 +27,7 @@ https://medium.com/@manojkumar_41904/understanding-init-containers-and-sidecar-c
 
 # Course
 
-[CKAD](#CKAD)
+- [CKAD](#CKAD)
 
 ## CKAD
 
