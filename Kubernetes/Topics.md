@@ -57,3 +57,11 @@ kubectl get pods --namespace kube-system  -> it will show the status of schedule
 18. Validating and Mutating Admission controllers
 
 ## Logging and Monitoring
+
+19. Monitor Cluster Components
+20. Managing Application logs
+
+## Application lifecycle management
+
+21. Rolling updates and rollback
+22. Commands and Arguments in docker and kubernetes
