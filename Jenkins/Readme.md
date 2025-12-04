@@ -1,2 +1,4 @@
 - To setup a CI/CD pipeline we need jenkins server
+- To install a jenkins java is a prerequisite
 - Jenkins should be hosted on separate server. for eg: Jenkins server
+- Jenkins run on port 8080
