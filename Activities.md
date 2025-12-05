@@ -1,9 +1,11 @@
-## My Practice
+# My Practice
 - [Deploy 3-tier application in EKS cluster](https://github.com/SeshadriRC/three-tier-architecture-demo-project)
 
+# Jenkins
+- [Jenkins-installation](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day-1%3A%20Jenkins-Server-Setup.md)
 
 
-## Office
+# Office
 **Openshift**
 - Node restart in openshift
 
