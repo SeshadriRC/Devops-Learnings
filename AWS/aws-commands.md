@@ -1,7 +1,16 @@
 
 - [EC2](#ec2)
 - [Cloudwatch-alarms](#cloudwatch-alarms)
+- [Configure](#configure)
+- [Security-group](#Security-group)
 - [Sns-topics](#Sns-topics)
+- [sts](#sts)
+
+# Configure
+
+```
+aws configure list
+```
 
 # EC2
 
@@ -24,6 +33,18 @@ aws cloudwatch describe-alarms \
   --output table
 ```
 
+
+# Security-group
+
+- List the security group
+
+```
+aws ec2 describe-security-groups \
+  --query "SecurityGroups[*].[GroupId,GroupName]" \
+  --output table
+
+```
+
 # Sns-topics
 
 - List sns-topics
@@ -31,3 +52,12 @@ aws cloudwatch describe-alarms \
 ```
 aws sns list-topics
 ```
+
+# sts
+
+```
+aws sts get-caller-identity
+```
+
+
+
