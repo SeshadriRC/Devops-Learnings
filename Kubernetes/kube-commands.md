@@ -4,6 +4,12 @@
   
 # Node
 
+- drain the node
+
+```
+kubectl drain worker-node01 --ignore-daemonsets --force --delete-emptydir-data
+```
+
 - show the labels of node
 
 ```
@@ -22,4 +28,9 @@ kubectl label node <node-name> disktype=ssd
 
 ```
 kubectl delete -f pod.yaml
+```
+
+
+```
+kubectl scale deploy myapp --replicas=4
 ```
