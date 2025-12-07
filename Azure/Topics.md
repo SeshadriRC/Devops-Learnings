@@ -1,1 +1,1 @@
-
+- [Create Key-pair](https://github.com/SeshadriRC/Devops/blob/main/Azure/100-days-of-Azure/Day1%3A%20Create%20SSH%20Key%20Pair%20for%20Azure%20Virtual%20Machine.md)
