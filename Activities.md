@@ -1,6 +1,9 @@
 # My Practice
 - [Deploy 3-tier application in EKS cluster](https://github.com/SeshadriRC/three-tier-architecture-demo-project)
 
+## AWS
+- [Create key-pair](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day1:%20Create%20Key%20Pair.md)
+  
 ## Jenkins
 - [Jenkins-installation](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day-1%3A%20Jenkins-Server-Setup.md)
 
