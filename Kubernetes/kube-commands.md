@@ -1,6 +1,7 @@
 
 - [Node](#node)
 - [Pod](#pod)
+- [Service](#service)
   
 # Node
 
@@ -33,4 +34,12 @@ kubectl delete -f pod.yaml
 
 ```
 kubectl scale deploy myapp --replicas=4
+```
+
+# Service
+
+- to list the service based on the selector
+
+```
+kubectl get svc -o jsonpath='{range .items[?(@.spec.selector.app=="myapp")]}{.metadata.name}{"\n"}{end}'
 ```
