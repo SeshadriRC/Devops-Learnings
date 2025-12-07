@@ -15,6 +15,14 @@
 - Deploy redis ( Day 65 ConfigMap )
 - Deploy database server (all topics covered - Env variables,PV,PVC,Secrets,Service)
 
+
+## My Practice
+
+- HPA
+- Configmap/Secret
+- env variable
+- PV/PVC
+
 ## Sample Image
 
 - kodekloud/event-simulator
