@@ -4,6 +4,9 @@
 ## Jenkins
 - [Jenkins-installation](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day-1%3A%20Jenkins-Server-Setup.md)
 
+## Linux
+- [Create Linux user and assign UID and designate home directory](https://github.com/SeshadriRC/Devops/tree/main/Linux/Level-1)
+  
 ## Terraform
 
 - [Key-Pair-Creation](https://github.com/SeshadriRC/Devops/blob/main/Terraform/Day1%3A%20Create%20Key%20Pair%20Using%20Terraform.md)
