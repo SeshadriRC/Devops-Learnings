@@ -1,8 +1,33 @@
 
+- [ConfigMap](#configmap)
+- [ETCD](#etcd)
 - [Node](#node)
 - [Pod](#pod)
 - [Service](#service)
+- [Secrets](#secrets)
+
+
+# ConfigMap
+
+- To create a configmap
+```
+k create cm --help
+k create cm <cm-name> --from-literal=<key>=<value>
+
+k get cm
+k describe cm <config-name>
+
+```
+
+# Etcd
+
+- Install etcd-client
+
+```
+apt-get install etcd-client
+```
   
+
 # Node
 
 - drain the node
@@ -31,9 +56,15 @@ kubectl label node <node-name> disktype=ssd
 kubectl delete -f pod.yaml
 ```
 
-
+- scale the replica
 ```
 kubectl scale deploy myapp --replicas=4
+```
+
+- replace the pod
+
+```
+kubectl replace --force -f file.yaml
 ```
 
 # Service
@@ -42,4 +73,23 @@ kubectl scale deploy myapp --replicas=4
 
 ```
 kubectl get svc -o jsonpath='{range .items[?(@.spec.selector.app=="myapp")]}{.metadata.name}{"\n"}{end}'
+```
+
+# Secrets
+
+- To create a secret
+
+```
+k create secret generic <secret-name> --from-literal=<key>=<value>
+
+k get secrets
+k describe secret <secret-name>
+```
+
+- Decode and encode a secret
+
+```
+echo -n "my-password" | base64        --> encode
+
+echo "encoded-pass" | base64          --> decode
 ```
