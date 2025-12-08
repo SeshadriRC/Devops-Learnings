@@ -77,3 +77,5 @@ kubectl get pods --namespace kube-system  -> it will show the status of schedule
 
 21. Rolling updates and rollback
 22. Commands and Arguments in docker and kubernetes
+23. Configure environment variables
+24. Secrets , Additional resource               --> **Pending**
