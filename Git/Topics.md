@@ -1,2 +1,2 @@
 - [Set Up Git Repository on Storage Server](https://github.com/SeshadriRC/Devops/blob/main/Git/Day1%3A%20Set%20Up%20Git%20Repository%20on%20Storage%20Server.md)
-- [Clone Git Repository on Storage Server]
+- [Clone Git Repository on Storage Server](https://github.com/SeshadriRC/Devops/blob/main/Git/Level-1/Day2%3A%20Clone%20Git%20Repository%20on%20Storage%20Server.md)
