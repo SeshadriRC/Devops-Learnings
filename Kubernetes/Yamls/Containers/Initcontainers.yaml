@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: app
+  name: app
+  namespace: elastic-stack
+spec:
+  initContainers:
+  - name: sidecar
+    image: kodekloud/filebeat-configured
+    restartPolicy: Always
+    volumeMounts:
+      - name: log-volume
+        mountPath: /var/log/event-simulator
+
+  containers:
+  - image: kodekloud/event-simulator
+    name: app
+    resources: {}
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+
+  volumes:
+  - hostPath:
+      path: /var/log/webapp
+      type: DirectoryOrCreate
+    name: log-volume
