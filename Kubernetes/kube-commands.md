@@ -50,6 +50,11 @@ kubectl label node <node-name> disktype=ssd
 
 # Pod
 
+- exec into the pod
+
+```
+kubectl -n elastic-stack exec -it app -- cat /log/app.log
+```
 - delete the pod by using yaml
 
 ```
