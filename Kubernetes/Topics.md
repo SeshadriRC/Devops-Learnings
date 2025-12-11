@@ -79,3 +79,6 @@ kubectl get pods --namespace kube-system  -> it will show the status of schedule
 22. Commands and Arguments in docker and kubernetes
 23. Configure environment variables
 24. Secrets , Additional resource               --> **Pending**
+25. Scale Applications
+26. Multi containers, Init Containers
+27. Self healing application, Manual scaling, HPA and VPA practices
