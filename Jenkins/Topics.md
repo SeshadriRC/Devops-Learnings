@@ -9,3 +9,4 @@
 ## Level-1
 
 - [Jenkins Installation](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day-1%3A%20Jenkins-Server-Setup.md)
+- [Install Jenkins Plugins](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day2%3A%20Install%20Jenkins%20Plugins.md)
