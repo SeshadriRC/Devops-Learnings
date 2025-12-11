@@ -82,3 +82,5 @@ kubectl get pods --namespace kube-system  -> it will show the status of schedule
 25. Scale Applications
 26. Multi containers, Init Containers
 27. Self healing application, Manual scaling, HPA and VPA practices
+
+## Cluster Maintenance
