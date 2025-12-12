@@ -25,3 +25,4 @@
 
 - Create key pair[key-pair-creation](https://github.com/SeshadriRC/Devops/blob/main/Terraform/Day1%3A%20Create%20Key%20Pair%20Using%20Terraform.md)
 - Create Security group[security-group](https://github.com/SeshadriRC/Devops/blob/main/Terraform/Level-1/Day2%3A%20Create%20Security%20Group%20using%20terraform.md)
+- [Create VPC](https://github.com/SeshadriRC/Devops/blob/main/Terraform/Level-1/Day3%3A%20Create%20VPC%20Using%20Terraform.md)
