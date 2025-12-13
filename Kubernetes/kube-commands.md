@@ -67,6 +67,15 @@ kubectl label node <node-name> disktype=ssd
 
 # Pod
 
+- describe
+
+```
+k describe pod etcd-controlplane -n kube-system | grep Image
+
+kubectl -n kube-system describe pod etcd-controlplane | grep '\--cert-file'
+      --cert-file=/etc/kubernetes/pki/etcd/server.crt
+
+```
 - exec into the pod
 
 ```
