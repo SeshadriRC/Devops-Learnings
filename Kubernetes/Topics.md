@@ -88,8 +88,6 @@ kubectl get pods --namespace kube-system  -> it will show the status of schedule
 
 28. OS Upgrades
 29. Cluster upgrade
-30. Backup and restore methods
+30. Backup and restore methods of etcd
      - https://www.youtube.com/watch?v=qRPNuT080Hk  --> **Pending**
 
-https://www.youtube.com/watch?v=qRPNuT080Hk
-## Cluster Maintenance
