@@ -5,6 +5,7 @@
 - [Security-group](#Security-group)
 - [Sns-topics](#Sns-topics)
 - [sts](#sts)
+- [VPC](#vpc)
 
 # Configure
 
@@ -36,14 +37,15 @@ aws cloudwatch describe-alarms \
 
 # Security-group
 
+- [Create Security group](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day2%3A%20Create%20Security%20Group.md)
 - List the security group
 
 ```
 aws ec2 describe-security-groups \
   --query "SecurityGroups[*].[GroupId,GroupName]" \
   --output table
-
 ```
+
 
 # Sns-topics
 
@@ -57,6 +59,16 @@ aws sns list-topics
 
 ```
 aws sts get-caller-identity
+```
+
+# VPC
+
+```
+aws ec2 describe-vpcs --query "Vpcs[].VpcId" --output table
+
+aws ec2 describe-vpcs \
+  --query "Vpcs[].{VpcId:VpcId, Name:Tags[?Key=='Name'].Value | [0]}" \
+  --output table
 ```
 
 
