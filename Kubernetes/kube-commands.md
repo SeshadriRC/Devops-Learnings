@@ -1,6 +1,8 @@
 
 - [ConfigMap](#configmap)
 - [ETCD](#etcd)
+- [HPA](#hpa)
+- [Logs](#logs)
 - [Node](#node)
 - [Pod](#pod)
 - [Service](#service)
@@ -26,7 +28,22 @@ k describe cm <config-name>
 ```
 apt-get install etcd-client
 ```
-  
+
+# HPA
+
+```
+k describe hpa ,hpa-name>
+k get hpa
+kubectl get hpa --watch
+k autoscale deployment <dep-name>
+
+```
+# Logs
+
+```
+k logs <pod-name> -c <initcontainer>
+```
+
 
 # Node
 
@@ -70,6 +87,12 @@ kubectl scale deploy myapp --replicas=4
 
 ```
 kubectl replace --force -f file.yaml
+```
+
+- test pod
+
+```
+kubectl run testpod --rm -it --image=ubuntu -- bash
 ```
 
 # Service
