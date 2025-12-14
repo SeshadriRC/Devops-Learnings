@@ -3,6 +3,7 @@
 
 ## AWS
 - [Create key-pair](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day1:%20Create%20Key%20Pair.md)
+- [Create subnets](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day3:%20Create%20Subnet.md)
   
 ## Jenkins
 - [Jenkins-installation](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day-1%3A%20Jenkins-Server-Setup.md)
