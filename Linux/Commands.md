@@ -1,8 +1,15 @@
+- [get-ent](#get-ent)
 - [User-management](#user-management)
 - [vi-editor](#vi-editor)
 - [Wget](#wget)
 - [Yum](#yum)
 
+
+## Get-ent
+
+```
+getent group nautilus_developers
+```
 
 ## Wget
 
@@ -20,6 +27,7 @@ wget -O /etc/yum.repos.d/jenkins.repo \
 ```
 yum upgrade
 yum install jenkins
+yum provides */nslookup       -> it will check whether nslookup is in which package 
 ```
 
 ## User-management
@@ -36,6 +44,14 @@ cat /etc/group -> Check the group information
 
 ```
 
+- Check the group details
+
+```
+cat /etc/group
+
+[banner@stapp03 ~]$ groups jarod
+jarod : jarod nautilus_developers
+```
 - Create a group
 
 ```
@@ -46,7 +62,6 @@ groupadd developers
 - Add user to a group
 
 ```
-
 
 Primary group
 usermod -g <primary-group> <user-name>
