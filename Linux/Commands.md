@@ -1,4 +1,5 @@
 - [get-ent](#get-ent)
+- [nslookup](#nslookup)
 - [User-management](#user-management)
 - [vi-editor](#vi-editor)
 - [Wget](#wget)
@@ -9,6 +10,18 @@
 
 ```
 getent group nautilus_developers
+```
+
+## nslookup
+
+```
+[tony@stapp01 ~]$ nslookup stapp03
+Server:         127.0.0.11
+Address:        127.0.0.11#53
+
+Non-authoritative answer:
+Name:   stapp03.stratos.xfusioncorp.com
+Address: 172.17.0.6
 ```
 
 ## Wget
