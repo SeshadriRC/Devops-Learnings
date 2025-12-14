@@ -1,4 +1,6 @@
 
+- [Certificate](#certificate)
+- [Config](#config)
 - [ConfigMap](#configmap)
 - [ETCD](#etcd)
 - [HPA](#hpa)
@@ -8,6 +10,24 @@
 - [Service](#service)
 - [Secrets](#secrets)
 
+
+# Certificate
+
+```
+openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text -noout
+k get csr
+k certificate approve <user-name>
+k certificate deny <user-name>
+k delete csr <user-name>
+echo "keywords" | base64 --decode
+```
+
+# Config
+
+```
+k config view
+k config use-context research --kubeconfig <config-file-location>
+```
 
 # ConfigMap
 
