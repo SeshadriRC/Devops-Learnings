@@ -10,6 +10,7 @@ Repo2:- https://github.com/gashok13193/DevOps-Docs
 - allow inboud in security group
 
 **Step1:** git checkout
+select as pipeline type job
 git creds give in pipeline syntax --> git, then it will generate a code
 plugins: stage view
 
@@ -82,3 +83,42 @@ Add below and save it
 <img width="1390" height="626" alt="image" src="https://github.com/user-attachments/assets/cbe13fea-e919-456c-a6da-a821f3ec4207" />
 <img width="1240" height="484" alt="image" src="https://github.com/user-attachments/assets/ad664aa2-66aa-4854-8010-eecda53c2b99" />
 
+now copy this green colour token and keep it with you
+
+now install plugin: Sonarqube scanner
+
+go to tools --> Add sonarqube scanner and give any name, but before that since sonarqube is a separate app we need to configure creds. follow the next step
+<img width="1566" height="706" alt="image" src="https://github.com/user-attachments/assets/f50e6fb9-df0c-4f08-a573-f893c599d789" />
+
+Manage Jenkins --> Creds --> system --> Global creds -> Add creds -> select secret text
+<img width="1620" height="523" alt="image" src="https://github.com/user-attachments/assets/754d26a4-469e-44a3-8b60-613d578332ee" />
+<img width="1523" height="737" alt="image" src="https://github.com/user-attachments/assets/781c9eed-d800-40c4-ba05-fbf500f33172" />
+
+Paste that green colour token which we copied
+<img width="1489" height="600" alt="image" src="https://github.com/user-attachments/assets/751c772e-1bca-4429-aa21-d5dffef859f2" />
+<img width="1475" height="665" alt="image" src="https://github.com/user-attachments/assets/e20698bf-1ac5-4e02-ab35-19debb225216" />
+
+- now add sonarqube in tools and save it
+<img width="1580" height="701" alt="image" src="https://github.com/user-attachments/assets/aa4376c9-a276-433b-8768-8a35e31f8da2" />
+
+- we need to mention it under environment, since we can't add this in tools block
+<img width="1453" height="666" alt="image" src="https://github.com/user-attachments/assets/1a6749dd-16c4-4e92-ae99-c63e200ac138" />
+
+- sonarqube name come from the System option, there we have configured it
+<img width="1041" height="214" alt="image" src="https://github.com/user-attachments/assets/2103a906-2db2-4839-aaaf-956bb2dba20e" />
+<img width="1541" height="649" alt="image" src="https://github.com/user-attachments/assets/fecb94cf-a1d7-45d1-98c9-174741263d1c" />
+
+<img width="1509" height="712" alt="image" src="https://github.com/user-attachments/assets/cd35e01e-9811-477d-bcb8-ab6890abc40b" />
+
+Ref:- 
+<img width="1667" height="575" alt="image" src="https://github.com/user-attachments/assets/fc0e8b49-1358-4f1e-ad8a-9f36d3db8996" />
+
+- Now build it
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fb29a6eb-f523-4435-be9f-e5a7429837f0" />
+
+- once the build is complete , we can see the status of that build
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9079231d-c435-4530-b5db-1c7ede114225" />
+
+**Step3: Code Build**
