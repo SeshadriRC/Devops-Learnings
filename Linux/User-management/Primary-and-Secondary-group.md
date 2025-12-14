@@ -131,3 +131,108 @@ If you want, I can also explain this with:
 * Real-world permission scenario
 * Kubernetes/OpenShift analogy
 * How `newgrp` works
+
+---
+
+To check whether a user belongs to a group as a **primary** or **secondary** member, use these **reliable Linux commands**.
+
+---
+
+## ✅ Best & simplest way (recommended)
+
+### 1️⃣ Check user identity
+
+```bash
+id jarod
+```
+
+### Example output
+
+```
+uid=1002(jarod) gid=1003(jarod) groups=1003(jarod),1002(nautilus_developers)
+```
+
+### How to read it
+
+* `gid=1003(jarod)` → **PRIMARY group**
+* `groups=...` → **All groups**
+
+  * Any group **other than the gid one** is a **SECONDARY group**
+
+✔ Here:
+
+* Primary → `jarod`
+* Secondary → `nautilus_developers`
+
+---
+
+## 🔍 Method 2: Using `/etc/passwd` + `/etc/group`
+
+### Primary group (from `/etc/passwd`)
+
+```bash
+getent passwd jarod
+```
+
+Output:
+
+```
+jarod:x:1002:1003::/home/jarod:/bin/bash
+```
+
+* 4th field (`1003`) = **Primary GID**
+
+Resolve group name:
+
+```bash
+getent group 1003
+```
+
+---
+
+### Secondary groups (from `/etc/group`)
+
+```bash
+getent group nautilus_developers
+```
+
+If you see `jarod` listed at the end:
+
+```
+nautilus_developers:x:1002:jarod
+```
+
+→ `jarod` is a **secondary member**
+
+---
+
+## 🔄 Method 3: Using `groups` command
+
+```bash
+groups jarod
+```
+
+⚠️ Note:
+
+* First group shown is usually the **primary group**
+* But output order is not guaranteed → use `id` for accuracy
+
+---
+
+## 📌 Quick decision rule
+
+* **Primary group** = `gid` from `id` or `/etc/passwd`
+* **Secondary groups** = groups listed in `/etc/group` for that user
+
+---
+
+## 🧠 One-line summary
+
+👉 **If the group matches `gid` → Primary**
+👉 **If listed elsewhere → Secondary**
+
+If you want, I can also give:
+
+* A **one-liner script** to check this
+* How to change primary vs secondary group safely
+
