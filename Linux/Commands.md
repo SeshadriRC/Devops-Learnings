@@ -1,5 +1,6 @@
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
+- [openssl](#openssl)
 - [User-management](#user-management)
 - [vi-editor](#vi-editor)
 - [Wget](#wget)
@@ -25,6 +26,38 @@ Address:        127.0.0.11#53
 Non-authoritative answer:
 Name:   stapp03.stratos.xfusioncorp.com
 Address: 172.17.0.6
+```
+
+## OpenSSL
+
+[openssl](#https://github.com/SeshadriRC/Devops-Learnings/blob/main/Linux/openssl.md)
+
+- Generate a Private Key
+```
+openssl genrsa -out server.key 2048
+```
+
+- Create a Certificate Signing Request (CSR)
+
+```
+openssl req -new -key server.key -out server.csr
+```
+
+- Generate a Self-Signed Certificate
+
+```
+openssl req -x509 -new -nodes \
+  -key server.key \
+  -sha256 \
+  -days 365 \
+  -out server.crt
+```
+
+- Check Certificate Details
+
+```
+openssl x509 -in server.crt -text -noout
+
 ```
 
 ## Wget
