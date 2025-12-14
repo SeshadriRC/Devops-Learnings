@@ -4,6 +4,7 @@
 - [Configure](#configure)
 - [Security-group](#Security-group)
 - [Sns-topics](#Sns-topics)
+- [Subnets](#subnets)
 - [sts](#sts)
 - [VPC](#vpc)
 
@@ -54,6 +55,19 @@ aws ec2 describe-security-groups \
 ```
 aws sns list-topics
 ```
+
+# Subnets
+
+- list subnet
+
+```
+aws ec2 describe-subnets \
+  --filters Name=vpc-id,Values=vpc-0491678b962cfdb50 \
+  --query "Subnets[].CidrBlock" \
+  --output table
+```
+
+- [create subnet](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day3:%20Create%20Subnet.md)
 
 # sts
 
