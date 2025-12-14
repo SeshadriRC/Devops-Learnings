@@ -1,12 +1,16 @@
 
-- [Kubernetes]
-- [Linux]
-- [Networking]
+- [Kubernetes](#kubernetes)
+- [Linux](#linux)
+- [Networking](#networking)
 
 
 ## Kubernetes
 
 - we will access kube-api server using kubectl
+
+### Ques
+
+- what is kube-adm
 
 ## Networking
 
