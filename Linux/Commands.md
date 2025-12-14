@@ -12,7 +12,10 @@
 getent group nautilus_developers
 ```
 
+
 ## nslookup
+
+- [nslookup](https://github.com/SeshadriRC/Devops-Learnings/blob/main/Linux/nslookup.md)
 
 ```
 [tony@stapp01 ~]$ nslookup stapp03
