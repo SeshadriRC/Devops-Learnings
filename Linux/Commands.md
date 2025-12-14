@@ -1,4 +1,5 @@
 - [User-management](#user-management)
+- [vi-editor](#vi-editor)
 - [Wget](#wget)
 - [Yum](#yum)
 
@@ -54,7 +55,7 @@ Secondary group
 usermod -aG <group-name> <user-name>
 ```
 
-## VI editor
+## vi-editor
 
 esc - Normal mode
 
