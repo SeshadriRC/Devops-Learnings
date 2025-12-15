@@ -121,4 +121,90 @@ Ref:-
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9079231d-c435-4530-b5db-1c7ede114225" />
 
-**Step3: Code Build**
+**Step3: Code Build using Maven**
+
+add mvn clean install, then save it and run the job
+
+<img width="1611" height="689" alt="image" src="https://github.com/user-attachments/assets/a93c9c87-eeb2-4884-bdc5-f6e7d86ae8f9" />
+
+Now go to that particular build no.4 --> workspaces --> we can notice jar file is created
+
+<img width="1587" height="771" alt="image" src="https://github.com/user-attachments/assets/95bfd912-96d3-4bf7-9f8b-df9e91977b21" />
+
+<img width="1461" height="563" alt="image" src="https://github.com/user-attachments/assets/a7be7251-6bba-4b6c-9499-474b028a79b0" />
+
+
+**Step3: Docker Build**
+
+Prerequisites: 
+- Docker should be installed
+- since we need to use jenkins with docker, we need to provide permissions ( sudo usermod -aG docker jenkins ), adding jenkins user to docker group
+- Now restart jenkins and docker
+- Plugins install: Docker Commons, Docker Pipeline, Docker API, Docker
+- Manage jenkins --> tools --> Add docker
+- Add creds for docker, here we need to use our docker hub password
+- Go to pipeline syntax and generate the script for docker, no need to put docker URL, it will automatically pick
+- Now add steps for docker in the pipeline script
+- Now build it
+- Now check in ec2 , image should be there
+- Push it into docker hub, create a repository in docker hub so that we can able to push it
+- Tag the image and push it
+- Now image is ready in docker-hub
+  
+<img width="1520" height="671" alt="image" src="https://github.com/user-attachments/assets/6f51ac66-8314-4c97-8b63-f2e0aa6e9718" />
+
+<img width="1758" height="970" alt="image" src="https://github.com/user-attachments/assets/bd19813e-0779-45a5-bb7f-d8df360ca5af" />
+
+<img width="1647" height="800" alt="image" src="https://github.com/user-attachments/assets/987842a9-fa72-400f-833e-9d274ce75439" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/26ff3e38-d7ac-427e-aa32-154a9f3712c0" />
+
+<img width="1611" height="554" alt="image" src="https://github.com/user-attachments/assets/4f0a8487-52e3-4cf6-a203-17934b1b8d69" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/777f400f-006e-4e11-8e1f-5c819eecd254" />
+
+<img width="1486" height="597" alt="image" src="https://github.com/user-attachments/assets/c2eeec6e-82b5-4163-a90f-89cec587956b" />
+
+<img width="1335" height="438" alt="image" src="https://github.com/user-attachments/assets/b17f1280-dab6-4ef8-8251-20fab15b78cd" />
+
+<img width="1476" height="795" alt="image" src="https://github.com/user-attachments/assets/39adc9c7-ac3c-46a3-903f-cccb574d7160" />
+
+<img width="1593" height="707" alt="image" src="https://github.com/user-attachments/assets/aa0c513e-8962-4713-90e0-aee9f1e2f0f9" />
+
+<img width="1584" height="799" alt="image" src="https://github.com/user-attachments/assets/684207de-8966-4afc-8307-0031ae88eff2" />
+
+<img width="1604" height="742" alt="image" src="https://github.com/user-attachments/assets/c0b1cf9a-043b-4dc7-b40f-1b04489cdfd3" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/530d3272-462d-4f40-ad71-8d80a2298a51" />
+
+
+**Step4: Deploy to Kubernetes**
+
+- Install the k8 in ec2 by using kubeadm.sh script, it will be in the devops doc repo
+- Now check installed or not
+- Plugins: Kubernetes CLI
+- Now go to ec2, home location cd ~/.kube, then copy the content from config file and save it in ur lap
+- Add creds in jenkins for kubernetes, kind select as secret , then choose the file option and upload your text file
+- Now generate a syntax using that cred , no need to select anything other than creds. then click generate pipeline script
+- Add the block for k8 in pipeline script
+- Edit the image name accordingly in git file
+- Now build is successful
+- pipeline is successful, we will get error because of code issue
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0f9731fb-3928-4582-9602-2481b2d1cec3" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ed0ee7d1-20aa-459e-b4d8-2916973fa811" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0cc80060-b653-4548-877e-9b4b962158b6" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e27060c8-0993-4da4-a0f9-3da940e7c0b9" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/735967a0-76d4-410b-934e-87f5db3ca754" />
+<img width="1723" height="752" alt="image" src="https://github.com/user-attachments/assets/b2a25856-443e-4660-bae3-92b30a1badfb" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9adc528c-405c-4db0-8373-e74a5d3c320c" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ce60d814-1a6e-4378-8e6a-c86f91340515" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4ec06a23-b750-45f1-8046-7d8915e04bd4" />
+<img width="1414" height="293" alt="image" src="https://github.com/user-attachments/assets/ff828720-e939-42d5-a30a-edab9fa198ac" />
+<img width="1519" height="797" alt="image" src="https://github.com/user-attachments/assets/009739f3-966d-4fc4-982f-456c409f980b" />
+<img width="1696" height="682" alt="image" src="https://github.com/user-attachments/assets/aa0a31be-83dc-443c-ab42-81998325b44d" />
+<img width="1691" height="581" alt="image" src="https://github.com/user-attachments/assets/bea8130b-1b74-4902-8cbb-b641f4b00679" />
+<img width="1493" height="637" alt="image" src="https://github.com/user-attachments/assets/9f3b6953-3c69-4794-aa07-9869afa28688" />
+<img width="1500" height="342" alt="image" src="https://github.com/user-attachments/assets/32f971bd-40de-4acc-8003-c9492a57eb2a" />
+
+
