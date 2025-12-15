@@ -9,6 +9,7 @@
 - [Pod](#pod)
 - [Service](#service)
 - [Secrets](#secrets)
+- [User Creation](https://github.com/SeshadriRC/Devops-Learnings/blob/main/Kubernetes/User-management/User-creation.md)
 
 
 # Certificate
@@ -21,6 +22,8 @@ k certificate deny <user-name>
 k delete csr <user-name>
 echo "keywords" | base64 --decode
 ```
+
+
 
 # Config
 
