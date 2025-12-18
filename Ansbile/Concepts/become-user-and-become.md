@@ -1,3 +1,6 @@
+
+[practical](https://github.com/SeshadriRC/Devops/blob/main/Ansible/Level-1/Day2%3A%20Create%20Ansible%20Inventory%20for%20App%20Server%20Testing.md)
+
 - what is the difference between become and become_user
   
 This is an **Ansible privilege-escalation** question — very common in DevOps interviews 👍
