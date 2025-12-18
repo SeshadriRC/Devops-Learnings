@@ -28,6 +28,8 @@
 
 - [Troubleshoot and Create Ansible Playbook](https://github.com/SeshadriRC/Devops/blob/main/Ansible/Level-1/Day1%3A%20Troubleshoot%20and%20Create%20Ansible%20Playbook.md)
 
+- [Create Ansible Inventory for App Server Testing.md](https://github.com/SeshadriRC/Devops/blob/main/Ansible/Level-1/Day2%3A%20Create%20Ansible%20Inventory%20for%20App%20Server%20Testing.md)
+
 ## Docker
 
 - [Install Docker Packages](https://github.com/SeshadriRC/Devops/blob/main/Docker/Day%201%3A%20Install%20Docker%20Packages%20and%20Start%20Docker%20Service.md)
