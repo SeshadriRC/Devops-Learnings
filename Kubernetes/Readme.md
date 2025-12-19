@@ -13,6 +13,7 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
 - [Networking](#networking)
   - [DNS](#DNS)
   - [Network-namespace](#network-namespace)
+  - [Nework-lab](#network-lab)
 
 
 # Networking
@@ -41,7 +42,7 @@ iptables -nVL -t nat
 ```
 
 ---
-## Lab
+## Network-lab
 
 1. What is the network interface configured for cluster connectivity on the controlplane node?
 
