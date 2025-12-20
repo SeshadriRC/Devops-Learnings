@@ -23,3 +23,7 @@ git show commit id
 
 
 # Fork a git repository
+
+```
+go to git ui , navigate to sarah repository and clone it
+```
