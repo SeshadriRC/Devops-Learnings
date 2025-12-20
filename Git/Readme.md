@@ -7,7 +7,7 @@
 
 # Kodekloud
 
-- [Fork a Git Repository](fork-a-git-repository)
+- [Fork a Git Repository](#fork-a-git-repository)
 
 ---
 # git log
@@ -22,4 +22,4 @@ git show commit id
 ---
 
 
-Fork a git repository
+# Fork a git repository
