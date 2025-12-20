@@ -14,6 +14,8 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
 
 - [Install Calico CNI](#Install-Calico-CNI)
 
+# Concepts
+
 - [Networking](#networking)
   - [DNS](#DNS)
   - [Network-namespace](#network-namespace)
