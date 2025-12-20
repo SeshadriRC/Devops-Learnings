@@ -863,6 +863,7 @@ rm /etc/cni/net.d/10-flannel.conflist
 
 10. Install Calico CNI
 
+- https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises
 
 # Install Calico CNI
     
