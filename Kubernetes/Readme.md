@@ -10,10 +10,15 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
 - External traffic hits the node IP → NodePort → Service → Pods.
 
 
+# Activities
+
+- [Install Calico CNI](#Install-Calico-CNI)
+
 - [Networking](#networking)
   - [DNS](#DNS)
   - [Network-namespace](#network-namespace)
   - [Nework-lab](#network-lab)
+  - [CNI-lab](#cni-lab)
 
 
 # Networking
@@ -691,4 +696,262 @@ If you want, I can also explain:
 
 Just tell me 👍
 
+## CNI-lab
+
 ---
+
+1. Inspect the kubelet service and identify the container runtime endpoint value is set for Kubernetes.
+
+```
+Run the following command:
+
+cat /var/lib/kubelet/config.yaml | grep containerRuntimeEndpoint
+The container runtime endpoint is unix:///var/run/containerd/containerd.sock.
+```
+
+2. What is the path configured with all binaries of CNI supported plugins?
+
+```
+The CNI binaries are located under /opt/cni/bin by default.
+```
+
+3. Identify which of the below plugins is not available in the list of available CNI plugins on this host?
+
+```
+Run the command: ls /opt/cni/bin and identify the one not present at that directory.
+
+controlplane ~ ➜  ls /opt/cni/bin
+bandwidth  dhcp   firewall  host-device  ipvlan   loopback  portmap  README.md  static  tuning  vrf
+bridge     dummy  flannel   host-local   LICENSE  macvlan   ptp      sbr        tap     vlan
+```
+
+4. What is the CNI plugin configured to be used on this kubernetes cluster?
+
+```
+Run the command: ls /etc/cni/net.d/ and identify the name of the plugin.
+
+controlplane ~ ➜  ls /etc/cni/net.d/
+10-flannel.conflist
+```
+
+5. What binary executable file will be invoked by the container runtime after a container and its associated namespace are created?
+
+```
+Look at the type field in file /etc/cni/net.d/10-flannel.conflist.
+
+controlplane ~ ➜  cat /etc/cni/net.d/10-flannel.conflist | grep type
+      "type": "flannel",
+      "type": "portmap",
+
+```
+
+6. Which CNI plugin is currently installed on the cluster?
+
+```
+cat /etc/cni/net.d/
+```
+
+7. Two applications, frontend and backend, have been provisioned in the default namespace in the cluster. A network policy deny-backend has been provisioned to block traffic to the backend app. To test whether the policy is working or not, use the following command:
+
+kubectl exec -it frontend -- curl -m 5 <BACKEND-POD-IP>
+
+You need to replace <BACKEND-POD-IP> with the IP of the backend pod. To retrieve the IP:
+
+kubectl get pods -o wide
+
+Can the frontend pod reach the backend pod?
+
+```
+kubectl exec -it frontend -- curl -m 5 <BACKEND-POD-IP>
+
+controlplane /etc/cni/net.d ✖ k get netpol
+NAME           POD-SELECTOR   AGE
+deny-backend   app=backend    4m29s
+
+controlplane /etc/cni/net.d ➜  k describe netpol deny-backend
+Name:         deny-backend
+Namespace:    default
+Created on:   2025-12-20 07:24:24 +0000 UTC
+Labels:       <none>
+Annotations:  <none>
+Spec:
+  PodSelector:     app=backend
+  Allowing ingress traffic:
+    <none> (Selected pods are isolated for ingress connectivity)
+  Not affecting egress traffic
+  Policy Types: Ingress
+
+controlplane /etc/cni/net.d ➜  k get netpol deny-backend -o yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"NetworkPolicy","metadata":{"annotations":{},"name":"deny-backend","namespace":"default"},"spec":{"ingress":[],"podSelector":{"matchLabels":{"app":"backend"}},"policyTypes":["Ingress"]}}
+  creationTimestamp: "2025-12-20T07:24:24Z"
+  generation: 1
+  name: deny-backend
+  namespace: default
+  resourceVersion: "1595"
+  uid: 2818c0a0-1634-4dce-89f3-b68d501148e5
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  policyTypes:
+  - Ingress
+
+controlplane /etc/cni/net.d ➜  k get pods -o wide
+NAME       READY   STATUS    RESTARTS   AGE     IP           NODE           NOMINATED NODE   READINESS GATES
+backend    1/1     Running   0          7m45s   172.17.0.5   controlplane   <none>           <none>
+frontend   1/1     Running   0          7m45s   172.17.0.4   controlplane   <none>           <none>
+
+controlplane /etc/cni/net.d ➜  k exec -it frontend -- sh
+# curl
+curl: try 'curl --help' or 'curl --manual' for more information
+# curl -m 5 172.17.0.5
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+#
+
+```
+---
+
+8. As you have seen, the curl command from the frontend app to the backend app succeeded and returned the NGINX welcome page. However, this should not be the expected behavior given that we have a deny-backend network policy in place to prohibit this from happening.
+Why did the curl command succeed?
+
+```
+this cni does not support netpol
+```
+
+9. The Flannel CNI does not support NetworkPolicies.
+
+Delete Flannel CNI.
+
+```
+To clean up the Flannel CNI from the cluster, delete the Flannel DaemonSet, configuration file, as well as the ConfigMap hosting the Flannel configuration:
+
+kubectl delete daemonset -n kube-flannel kube-flannel-ds
+kubectl delete cm kube-flannel-cfg -n kube-flannel
+rm /etc/cni/net.d/10-flannel.conflist
+```
+
+---
+
+10. Install Calico CNI
+
+
+# Install Calico CNI
+    
+Calico is a Container Network Interface (CNI) that provides support for Kubernetes NetworkPolicy enforcement. In this task, you will install Calico into the cluster to enable network policy functionality.
+
+Installation Guidelines
+Follow the self-managed on-premises installation guide for Calico, available from the links in the top-right corner of the terminal:
+
+Calico Documentation (Latest)
+
+Critical Requirements
+Dataplane Selection:
+
+Use the standard Linux dataplane (iptables-based)
+Do NOT use the eBPF dataplane option — it is incompatible with this lab environment
+Installation Components:
+
+Calico is deployed using the Tigera Operator
+You must install both the operator and the custom resource definitions (CRDs)
+Follow the installation steps in the correct order as specified in the documentation
+Network Configuration:
+
+The pod network CIDR must be configured as 172.17.0.0/16
+This setting is critical for pod-to-pod communication in this cluster
+You will need to create and modify a Calico Installation custom resource manifest
+Ensure the cidr field matches the required value before applying the configuration
+Verification
+Confirm that all Calico pods reach a Running state before proceeding:
+
+watch kubectl get pods -n calico-system
+
+
+Note: You may see errors on the csi-node-driver pod deployed in the calico-system namespace after you deploy Calico. These can be safely ignored and will not affect network policy enforcement.
+
+```
+First, install the Calico CRDs:
+
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.31.0/manifests/operator-crds.yaml
+Then install the Calico operator:
+
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.31.0/manifests/tigera-operator.yaml
+Download the custom resource definition yaml:
+
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.0/manifests/custom-resources.yaml -O
+Edit the file to update the CIDR field to 172.17.0.0/16 for pod communication to work successfully on the cluster:
+
+# Edit custom-resources.yaml and update the cidr field
+Edit the file to update the CIDR network. The file should look like this:
+
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  name: default
+spec:
+  calicoNetwork:
+    ipPools:
+    - name: default-ipv4-ippool
+      blockSize: 26
+      cidr: 172.17.0.0/16
+      encapsulation: VXLANCrossSubnet
+      natOutgoing: Enabled
+      nodeSelector: all()
+---
+apiVersion: operator.tigera.io/v1
+kind: APIServer
+metadata:
+  name: default
+spec: {}
+Apply the manifest file:
+
+kubectl apply -f custom-resources.yaml
+Wait until the calico pods are running:
+
+watch kubectl get pods -A
+You may ignore errors on the csi-node-driver pod deployed in the calico-system namespace.
+```
+
+---
+
+11. After we deployed the Calico CNI, we redeployed the applications. Now, Let's re-test the connectivity from the frontend app to the backend app:
+
+kubectl exec -it frontend -- curl -m 5 <BACKEND-POD-IP>
+
+You need to replace <BACKEND-POD-IP> with the IP of the backend pod. To retrieve the IP:
+
+kubectl get pods -o wide
+
+Can the frontend pod reach the backend pod?
+
+```
+kubectl exec -it frontend -- curl -m 5 <BACKEND-POD-IP>
+
+```
+
