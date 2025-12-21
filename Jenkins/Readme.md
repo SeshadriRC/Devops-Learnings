@@ -9,3 +9,5 @@
 
 
 # User Creation
+
+- User management will be found in Security -> Users
