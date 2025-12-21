@@ -12,7 +12,7 @@
 
 # Plugins
 
-- Project based authorization strategy -> useful for user authorization
+- Project based matrix authorization strategy -> useful for user authorization [practice](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day3%3A%20Configure%20Jenkins%20User%20Access.md)
 
 # User Creation
 
