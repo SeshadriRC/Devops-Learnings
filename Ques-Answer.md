@@ -300,3 +300,4 @@ If you want, I can also explain:
 - SMTP (25, TCP): Email sending for notifications.
 - Vault (8200, TCP): HashiCorp Vault secrets management.
 
+
