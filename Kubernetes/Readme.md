@@ -1,8 +1,9 @@
 ## Notes
 
 https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Introduction/Course-Introduction
-
 Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
+
+
 
 # Service
 
@@ -21,6 +22,8 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
   - [Network-namespace](#network-namespace)
   - [Nework-lab](#network-lab)
   - [CNI-lab](#cni-lab)
+  - [Service-networking-lab](#service-lab)
+  - [Core-DNS-Lab](#core-dns-lab)
 
 
 # Networking
@@ -958,3 +961,239 @@ kubectl exec -it frontend -- curl -m 5 <BACKEND-POD-IP>
 
 ```
 
+# Service-Lab
+
+1. What is the IP address and subnet mask assigned to the controlplane node's primary network interface?
+
+```
+Run the command:
+
+ip addr show eth0
+Check the IP address and subnet mask assigned to the eth0 interface.
+
+controlplane ~ ➜  ip addr show eth0
+3: eth0@if2092: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1410 qdisc noqueue state UP group default 
+    link/ether 9a:b7:ff:93:4b:2a brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 192.168.126.149/32 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::98b7:ffff:fe93:4b2a/64 scope link 
+       valid_lft forever preferred_lft forever
+
+Ans: 192.168.126.149/32
+```
+
+2. What is the range of IP addresses configured for PODs on this cluster?
+
+```
+The network is configured with canal. Check the canal pods logs using the command kubectl logs <canal-pod-name> -n kube-system and look for default IPv4 pool range.
+
+Or
+
+Check the kube-controller-manager.yaml manifest file and look for the --cluster-cidr parameter, which defines the IP range assigned to Pods in the cluster.
+
+controlplane ~ ➜  cat /etc/kubernetes/manifests/kube-controller-manager.yaml   | grep cluster-cidr
+    - --cluster-cidr=172.17.0.0/16
+```
+
+3. What is the IP Range configured for the services within the cluster?
+
+```
+Inspect the setting on kube-api server by running on command:
+cat /etc/kubernetes/manifests/kube-apiserver.yaml   | grep cluster-ip-range
+```
+
+4. How many kube-proxy pods are deployed in this cluster?
+
+```
+kubectl get pods -n kube-system
+```
+
+5. What type of proxy is the kube-proxy configured to use?
+
+```
+Check the logs of the kube-proxy pods. Run the command:
+kubectl logs -n kube-system kube-proxy-bbt2c
+
+controlplane ~ ➜  kubectl logs -n kube-system kube-proxy-bbt2c
+I1221 03:23:15.500113       1 server_linux.go:53] "Using iptables proxy"
+I1221 03:23:15.918928       1 shared_informer.go:349] "Waiting for caches to sync" controller="node informer cache"
+I1221 03:23:16.019717       1 shared_informer.go:356] "Caches are synced" controller="node informer cache"
+I1221 03:23:16.019762       1 server.go:219] "Successfully retrieved NodeIPs" NodeIPs=["192.168.126.149"]
+I1221 03:23:16.093191       1 conntrack.go:60] "Setting nf_conntrack_max" nfConntrackMax=524288
+E1221 03:23:16.094733       1 server.go:256] "Kube-proxy configuration may be incomplete or incorrect" err="nodePortAddresses is unset; NodePort connections will be accepted on all local IPs. Consider using `--nodeport-addresses primary`"
+I1221 03:23:16.189271       1 server.go:265] "kube-proxy running in dual-stack mode" primary ipFamily="IPv4"
+I1221 03:23:16.189324       1 server_linux.go:132] "Using iptables Proxier"
+I1221 03:23:16.195144       1 proxier.go:242] "Setting route_localnet=1 to allow node-ports on localhost; to change this either disable iptables.localhostNodePorts (--iptables-localhost-nodeports) or set nodePortAddresses (--nodeport-addresses) to filter loopback addresses" ipFamily="IPv4"
+I1221 03:23:16.226391       1 server.go:527] "Version info" version="v1.34.0"
+I1221 03:23:16.226429       1 server.go:529] "Golang settings" GOGC="" GOMAXPROCS="" GOTRACEBACK=""
+I1221 03:23:16.227756       1 config.go:200] "Starting service config controller"
+I1221 03:23:16.227767       1 config.go:403] "Starting serviceCIDR config controller"
+I1221 03:23:16.227781       1 shared_informer.go:349] "Waiting for caches to sync" controller="service config"
+I1221 03:23:16.227784       1 shared_informer.go:349] "Waiting for caches to sync" controller="serviceCIDR config"
+I1221 03:23:16.227782       1 config.go:106] "Starting endpoint slice config controller"
+I1221 03:23:16.227795       1 shared_informer.go:349] "Waiting for caches to sync" controller="endpoint slice config"
+I1221 03:23:16.227885       1 config.go:309] "Starting node config controller"
+I1221 03:23:16.227931       1 shared_informer.go:349] "Waiting for caches to sync" controller="node config"
+I1221 03:23:16.227941       1 shared_informer.go:356] "Caches are synced" controller="node config"
+I1221 03:23:16.328851       1 shared_informer.go:356] "Caches are synced" controller="service config"
+I1221 03:23:16.328956       1 shared_informer.go:356] "Caches are synced" controller="endpoint slice config"
+I1221 03:23:16.329088       1 shared_informer.go:356] "Caches are synced" controller="serviceCIDR config"
+```
+
+6. How does this Kubernetes cluster ensure that a kube-proxy pod runs on all nodes in the cluster?
+
+Inspect the kube-proxy pods and try to identify how they are deployed.
+
+```
+kubectl get ds -n kube-system
+```
+
+# Core-Dns-Lab
+
+1. Identify the DNS solution implemented in this cluster.
+
+```
+Run the command: kubectl get pods -n kube-system and look for the DNS pods.
+```
+
+2. What is the name of the service created for accessing CoreDNS?
+
+```
+Run the command: kubectl get service -n kube-system
+```
+
+3. What is the IP of the CoreDNS server that should be configured on PODs to resolve services?
+
+```
+Run the command: kubectl get service -n kube-system and look for cluster IP value.
+
+controlplane ~ ➜  kubectl get service -n kube-system
+NAME       TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   172.20.0.10   <none>        53/UDP,53/TCP,9153/TCP   23m
+
+controlplane ~ ➜  k create deploy ngin --image=nginx
+deployment.apps/ngin created
+
+controlplane ~ ➜  k get pods -o wide
+NAME                    READY   STATUS    RESTARTS   AGE     IP           NODE           NOMINATED NODE   READINESS GATES
+hr                      1/1     Running   0          9m35s   172.17.0.5   controlplane   <none>           <none>
+ngin-6dc76f44c4-rfxcx   1/1     Running   0          4s      172.17.0.9   controlplane   <none>           <none>
+simple-webapp-1         1/1     Running   0          9m22s   172.17.0.7   controlplane   <none>           <none>
+simple-webapp-122       1/1     Running   0          9m22s   172.17.0.8   controlplane   <none>           <none>
+test                    1/1     Running   0          9m35s   172.17.0.6   controlplane   <none>           <none>
+
+```
+
+4. Where is the configuration file located for configuring the CoreDNS service?
+
+```
+Inspect the Args field of the coredns deployment and check the file used.
+
+controlplane ~ ➜  k describe deploy coredns -n kube-system
+Name:                   coredns
+Namespace:              kube-system
+CreationTimestamp:      Sun, 21 Dec 2025 05:14:41 +0000
+Labels:                 k8s-app=kube-dns
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               k8s-app=kube-dns
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 25% max surge
+Pod Template:
+  Labels:           k8s-app=kube-dns
+  Service Account:  coredns
+  Containers:
+   coredns:
+    Image:       registry.k8s.io/coredns/coredns:v1.10.1
+    Ports:       53/UDP (dns), 53/TCP (dns-tcp), 9153/TCP (metrics), 8080/TCP (liveness-probe), 8181/TCP (readiness-probe)
+    Host Ports:  0/UDP (dns), 0/TCP (dns-tcp), 0/TCP (metrics), 0/TCP (liveness-probe), 0/TCP (readiness-probe)
+    Args:
+      -conf
+      /etc/coredns/Corefile
+
+```
+5. How is the Corefile passed into the CoreDNS POD?
+   
+```
+volumeMounts:
+        - mountPath: /etc/coredns
+          name: config-volume
+          readOnly: true
+
+volumes:
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: Corefile
+            path: Corefile
+          name: coredns
+        name: config-volume
+```
+6. What is the root domain/zone configured for this kubernetes cluster?
+
+```
+Run the command: kubectl describe configmap coredns -n kube-system and look for the entry after kubernetes.
+
+controlplane ~ ➜  kubectl describe configmap coredns -n kube-system
+Name:         coredns
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  <none>
+
+Data
+====
+Corefile:
+----
+.:53 {
+    errors
+    health {
+       lameduck 5s
+    }
+    ready
+    kubernetes cluster.local in-addr.arpa ip6.arpa {
+       pods insecure
+       fallthrough in-addr.arpa ip6.arpa
+       ttl 30
+    }
+    prometheus :9153
+    forward . /etc/resolv.conf {
+       max_concurrent 1000
+    }
+    cache 30
+    loop
+    reload
+    loadbalance
+}
+
+
+
+BinaryData
+====
+
+Events:  <none>
+```
+
+7. Test pod exists in default ns and web pod exists in payroll ns. now test needs to access payroll, so what is the svc name
+
+```
+web-service.payroll
+
+controlplane ~ ➜  k describe svc web-service -n payroll
+Name:                     web-service
+Namespace:                payroll
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 name=web
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       172.20.101.193
+IPs:                      172.20.101.193
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+Endpoints:                172.17.0.4:80
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+```
