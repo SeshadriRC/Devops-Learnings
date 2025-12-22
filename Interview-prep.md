@@ -1,18 +1,390 @@
 
 
+- [AWS](#AWS)
+
+****************************************************************************************************************************************************************
 ## AWS
+****************************************************************************************************************************************************************
+1. How will you handle a situation where your application, running on an EC2 instance, experiences high traffic or a spike during business hours?
 
-1. How will you handle a situation where your application, running on an EC2 instance, experiences high traffic or a spike during business hours? (3:01 - 3:21)
+Your answer is **mostly correct and interview-ready**, but it can be **strengthened technically and strategically**. I’ll first correct/improve it, then add **extra inputs** that interviewers like to hear from a DevOps engineer.
 
-The candidate would configure an autoscaling group and load balancers. During peak hours, the autoscaling group would scale up EC2 machines based on CPU and RAM usage, and during off-peak hours, it would scale down to save costs. The load balancer would distribute the load among the increased EC2 instances and provide health checks.
+---
 
-2. What kind of troubleshooting approach will you consider if your EC2 instance crashes unexpectedly? (5:06 - 5:14)
+## Improved & Corrected Answer (Interview-Grade)
 
-First, the candidate would check the AWS console for health checks. If health checks pass, they would log into the server to check RAM and CPU usage. If high, they would try restarting services. If unable to connect to the EC2, they would reboot it. To prevent future crashes, they would configure CPU and RAM usage alerts to take proactive action.
+> To handle high traffic or sudden spikes on an application running on EC2, I would place the instances behind an **Application Load Balancer (ALB)** and configure an **Auto Scaling Group (ASG)**.
+>
+> The Auto Scaling Group would scale **out** during peak traffic and scale **in** during off-peak hours based on metrics like **CPU utilization, memory usage (via CloudWatch custom metrics), request count per target, or latency**.
+>
+> The Load Balancer would **distribute traffic evenly**, perform **health checks**, and ensure only healthy instances receive traffic. This setup ensures **high availability, scalability, and cost optimization**.
 
-3. If your EC2 application needs to connect to the internet to download something (e.g., images) but is unable to, what might be the possible causes? (7:01 - 7:19)
+---
 
-The possible cause is that the EC2 is in a private subnet with misconfiguration of the NAT Gateway or NAT instance. Specifically, the route table of the private subnet might not have an entry for NAT, or the NAT Gateway itself might be provisioned in a private subnet instead of a public one.
+## What You Did Right ✅
+
+* ✔ Mentioned **Auto Scaling Group**
+* ✔ Mentioned **Load Balancer**
+* ✔ Scaling up during peak and down during off-peak
+* ✔ Cost optimization awareness
+
+---
+
+## Corrections & Enhancements ⚙️
+
+### 1️⃣ **CPU & RAM clarification**
+
+* AWS ASG **natively supports CPU**, but **RAM is NOT default**
+* Memory-based scaling requires:
+
+  * CloudWatch **custom metrics**
+  * CloudWatch Agent on EC2
+
+💡 Interview-friendly correction:
+
+> “Scaling can be based on CPU or memory using CloudWatch custom metrics.”
+
+---
+
+### 2️⃣ Use the Right Load Balancer
+
+* Prefer **Application Load Balancer (ALB)** for:
+
+  * HTTP/HTTPS traffic
+  * Path-based & host-based routing
+* Use **NLB** only for TCP/UDP or extreme performance needs
+
+---
+
+### 3️⃣ Scaling Strategy (Advanced Touch)
+
+Mention **scaling policies**:
+
+* Target Tracking (preferred)
+* Step Scaling
+* Scheduled Scaling (business hours)
+
+Example:
+
+> “For predictable traffic, I’d also configure scheduled scaling during known business hours.”
+
+---
+
+## Additional Inputs (What Interviewers Love 💯)
+
+You can add **any 2–3 of these** depending on seniority level.
+
+### 🔹 High Availability
+
+* Deploy EC2 instances across **multiple Availability Zones**
+* ASG automatically replaces unhealthy instances
+
+---
+
+### 🔹 Caching for Traffic Spikes
+
+* Use **CloudFront** for static content
+* Use **ElastiCache (Redis)** for frequently accessed data
+
+---
+
+### 🔹 Application-Level Optimization
+
+* Enable **connection pooling**
+* Optimize database queries
+* Use **read replicas** for RDS
+
+---
+
+### 🔹 Monitoring & Alerting
+
+* CloudWatch Alarms
+* ALB metrics (RequestCount, TargetResponseTime)
+* Enable **Auto Scaling notifications**
+
+---
+
+### 🔹 Graceful Handling of Sudden Spikes
+
+* Enable **instance warm-up**
+* Use **launch templates**
+* Pre-baked AMIs to reduce boot time
+
+---
+
+## Final Polished Answer (You Can Say This Directly)
+
+> I would handle high traffic by placing the application behind an Application Load Balancer and configuring an Auto Scaling Group across multiple availability zones.
+>
+> The ASG would scale based on metrics like CPU utilization, request count, or memory using CloudWatch custom metrics. During peak hours, it would automatically scale out, and during off-peak hours, it would scale in to optimize costs.
+>
+> The load balancer would distribute traffic, perform health checks, and route traffic only to healthy instances. I would also enable monitoring, alerts, and optionally caching using CloudFront or Redis to handle sudden spikes efficiently.
+
+---
+
+If you want, I can:
+
+* 🔥 Make this **shorter (2-minute answer)**
+* 🔥 Convert it into **STAR format**
+* 🔥 Ask you **follow-up interview questions** on this topic
+
+****************************************************************************************************************************************************************
+
+2. What kind of troubleshooting approach will you consider if your EC2 instance crashes unexpectedly? 
+
+Good question. Your answer has the **right intent**, but for an interview it needs to be **more structured, accurate, and slightly more AWS-aware**. I’ll first correct it, then give you a **clean interview-ready version**, and finally add **extra points** you can mention based on seniority.
+
+---
+
+## What Needs Correction / Improvement ❗
+
+1. **“If health checks pass, log in”**
+
+   * If the instance *crashed*, **health checks usually fail**.
+   * AWS has **two health checks**:
+
+     * **System status check** (AWS hardware/network)
+     * **Instance status check** (OS-level issues)
+
+2. **Reboot is not always the first action**
+
+   * Reboot only helps for **temporary kernel or memory lockups**
+   * For OS-level corruption, you need **recovery steps**
+
+3. **RAM monitoring is not default**
+
+   * CPU is default
+   * RAM requires **CloudWatch Agent + custom metrics**
+
+4. Missing key DevOps troubleshooting steps:
+
+   * Logs
+   * Root volume check
+   * Auto Scaling behavior
+   * Preventive actions
+
+---
+
+## Improved & Corrected Answer (Interview-Grade)
+
+> If an EC2 instance crashes unexpectedly, I would follow a structured troubleshooting approach.
+>
+> First, I would check the **EC2 system and instance status checks** in the AWS console to determine whether the issue is due to AWS infrastructure or an OS/application-level problem.
+>
+> If the instance is reachable, I would log in via SSH and check **CPU, memory usage (via CloudWatch custom metrics), disk space, and running services**, and review **application and system logs** to identify the root cause.
+>
+> If the instance is **unreachable**, I would attempt a **reboot**. If that doesn’t help, I would stop the instance, detach the root volume, attach it to another EC2 instance, and inspect logs or fix configuration issues.
+>
+> In Auto Scaling environments, I would also check whether the instance was terminated due to failed health checks.
+>
+> To prevent future crashes, I would configure **CloudWatch alarms, log monitoring, proper scaling policies, and resource limits**, and ensure alerts are in place for proactive action.
+
+---
+
+## Key Troubleshooting Flow (Simple to Remember 🧠)
+
+### 1️⃣ Check AWS-Level Health
+
+* System Status Check ❌ → AWS hardware/network issue
+* Instance Status Check ❌ → OS/kernel issue
+
+### 2️⃣ Instance Reachable?
+
+**Yes**
+
+* Check:
+
+  * CPU (`top`, `htop`)
+  * Memory (`free -m`)
+  * Disk (`df -h`)
+  * Logs (`/var/log/messages`, app logs)
+* Restart affected services
+
+**No**
+
+* Reboot instance
+* If still fails:
+
+  * Stop instance
+  * Detach root volume
+  * Attach to recovery instance
+  * Fix issues / retrieve logs
+
+---
+
+## Preventive Actions (Very Important for DevOps Interviews)
+
+Mention **at least 3** of these:
+
+* CloudWatch alarms (CPU, memory, disk)
+* Auto Scaling with health checks
+* Log monitoring (CloudWatch Logs)
+* Proper instance sizing
+* Resource limits and ulimits
+* Application-level health checks
+* Pre-baked AMIs
+* Scheduled maintenance windows
+
+---
+
+## Short & Crisp Version (If Interviewer Wants a Quick Answer)
+
+> I would first check EC2 system and instance status checks to identify whether the issue is infrastructure or OS-level. If the instance is reachable, I’d inspect CPU, memory, disk usage, and logs. If unreachable, I’d try a reboot or recover the root volume by attaching it to another instance. Finally, I’d implement CloudWatch alarms, log monitoring, and scaling policies to prevent future crashes.
+
+---
+
+If you want, next I can:
+
+* 🔥 Ask **follow-up interview questions** from this topic
+* 🔥 Convert this into **L2 / L3 DevOps level answers**
+* 🔥 Add **real production scenarios** you can quote in interviews
+
+
+****************************************************************************************************************************************************************
+3. If your EC2 application needs to connect to the internet to download something (e.g., images) but is unable to, what might be the possible causes? 
+
+Your answer is **directionally correct**, but for an interview it is **too narrow**. You focused only on NAT, while interviewers expect you to think across **networking, routing, security, and OS-level causes**.
+
+I’ll first **correct and enhance your answer**, then give you a **complete troubleshooting checklist**, and finally a **polished interview-ready version**.
+
+---
+
+## What You Got Right ✅
+
+* ✔ Correctly identified **private subnet**
+* ✔ Mentioned **NAT Gateway / NAT instance**
+* ✔ Correctly pointed out **route table misconfiguration**
+* ✔ Correctly stated **NAT Gateway must be in a public subnet**
+
+---
+
+## What’s Missing ❗
+
+You should also mention:
+
+* Internet Gateway (IGW)
+* Security Groups
+* NACLs
+* DNS resolution
+* Public vs private IP behavior
+* OS-level routing / proxy
+
+---
+
+## Corrected & Expanded Answer (Interview-Grade)
+
+> If an EC2 instance is unable to access the internet, one common reason is that it is running in a **private subnet** without proper outbound internet access.
+>
+> In such cases, the private subnet’s **route table must have a default route (0.0.0.0/0) pointing to a NAT Gateway or NAT instance**. The NAT Gateway itself must be deployed in a **public subnet** with a route to an **Internet Gateway (IGW)**.
+>
+> Other possible causes include **missing or misconfigured Internet Gateway**, restrictive **security group or NACL outbound rules**, **DNS resolution issues**, or **OS-level network misconfigurations**.
+>
+> I would systematically verify routing, security rules, and connectivity from the instance to identify the root cause.
+
+---
+
+## Complete Troubleshooting Checklist (DevOps-Level)
+
+### 1️⃣ Subnet Type
+
+* Private subnet → needs NAT
+* Public subnet → needs IGW + public IP
+
+---
+
+### 2️⃣ Route Tables
+
+Private subnet:
+
+```text
+0.0.0.0/0 → NAT Gateway
+```
+
+Public subnet:
+
+```text
+0.0.0.0/0 → Internet Gateway
+```
+
+---
+
+### 3️⃣ NAT Gateway / NAT Instance
+
+* Must be in a **public subnet**
+* Must have:
+
+  * Elastic IP
+  * Route to IGW
+* If NAT instance:
+
+  * Source/Destination check disabled
+
+---
+
+### 4️⃣ Internet Gateway
+
+* Attached to the VPC
+* Public subnet route points to it
+
+---
+
+### 5️⃣ Security Groups
+
+* Outbound rules allow:
+
+  * HTTP (80)
+  * HTTPS (443)
+  * DNS (53)
+
+(Default SG allows all outbound, but interviewers want you to mention it.)
+
+---
+
+### 6️⃣ Network ACLs
+
+* Outbound ephemeral ports (1024–65535) allowed
+* Return traffic allowed
+
+---
+
+### 7️⃣ DNS Resolution
+
+* `enableDnsSupport` = true
+* `enableDnsHostnames` = true
+* `/etc/resolv.conf` correctly configured
+
+---
+
+### 8️⃣ OS-Level Checks
+
+* Proxy misconfiguration
+* Incorrect default gateway
+* Firewall (iptables / firewalld)
+
+---
+
+## Short & Strong Interview Answer (Recommended)
+
+> If an EC2 instance cannot access the internet, I would first verify whether it is in a private subnet. For private subnets, outbound traffic must go through a NAT Gateway placed in a public subnet, and the private subnet’s route table must point 0.0.0.0/0 to the NAT.
+>
+> I would also check that the VPC has an Internet Gateway attached, security groups and NACLs allow outbound traffic, DNS resolution is enabled, and there are no OS-level network or proxy issues.
+
+---
+
+## One-Line Version (If Interviewer Rushes)
+
+> Internet access issues are usually caused by missing NAT routing, NAT not being in a public subnet, lack of IGW, restrictive security rules, or DNS misconfiguration.
+
+---
+
+If you want, next I can:
+
+* 🔥 Give **diagram-based explanation** (interview favorite)
+* 🔥 Ask **follow-up scenario questions**
+* 🔥 Convert this into **AWS CLI validation steps**
+
+
+****************************************************************************************************************************************************************
 
 4. If you have accidentally deleted data from an S3 bucket, or someone else has, and you need to restore it, how will you do this? (8:40 - 8:49)
 
