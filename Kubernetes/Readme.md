@@ -24,6 +24,7 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
   - [CNI-lab](#cni-lab)
   - [Service-networking-lab](#service-lab)
   - [Core-DNS-Lab](#core-dns-lab)
+  - [Ingress-networking-lab1](#Ingress-lab1)
 
 
 # Networking
@@ -1197,3 +1198,5 @@ Session Affinity:         None
 Internal Traffic Policy:  Cluster
 Events:                   <none>
 ```
+
+## Ingress-lab1
