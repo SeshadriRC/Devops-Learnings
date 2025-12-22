@@ -5,6 +5,65 @@
 ****************************************************************************************************************************************************************
 ## AWS
 ****************************************************************************************************************************************************************
+Core Infrastructure (Must Know)
+• **EC2** - Virtual servers, auto scaling, load balancers
+• **VPC** - Networking, subnets, security groups, NACLs
+• **IAM** - Users, roles, policies, permissions
+• **S3** - Object storage, static websites, artifact storage
+• **Route 53** - DNS management, health checks
+
+CI/CD Pipeline (Critical)
+• **CodeCommit** - Git repositories
+• **CodeBuild** - Build and test automation
+• **CodeDeploy** - Application deployment
+• **CodePipeline** - End-to-end CI/CD orchestration
+• **Elastic Container Registry (ECR)** - Docker image registry
+
+Containerization & Orchestration
+• **ECS** - Container orchestration service
+• **EKS** - Managed Kubernetes service
+• **Fargate** - Serverless containers
+• **Docker** (not AWS but essential)
+
+Infrastructure as Code
+• **CloudFormation** - AWS native IaC
+• **CDK** - Code-based infrastructure
+• **Systems Manager** - Parameter store, patch management
+• **AWS Config** - Configuration compliance
+
+Monitoring & Logging
+• **CloudWatch** - Metrics, logs, alarms, dashboards
+• **X-Ray** - Application tracing
+• **CloudTrail** - API audit logging
+• **AWS Health Dashboard** - Service health monitoring
+
+Security & Compliance
+• **Secrets Manager** - Credential management
+• **KMS** - Key management
+• **Certificate Manager** - SSL/TLS certificates
+• **GuardDuty** - Threat detection
+
+Database & Storage
+• **RDS** - Managed relational databases
+• **DynamoDB** - NoSQL database
+• **ElastiCache** - In-memory caching
+• **EFS/EBS** - File and block storage
+
+Serverless & Event-Driven
+• **Lambda** - Serverless functions
+• **API Gateway** - REST/GraphQL APIs
+• **SQS/SNS** - Messaging services
+• **EventBridge** - Event routing
+
+Learning Priority
+1. Start with EC2, VPC, IAM, S3 (foundation)
+2. Add CI/CD services (CodePipeline suite)
+3. Learn containers (ECS/EKS)
+4. Master monitoring (CloudWatch)
+5. Dive into IaC (CloudFormation/CDK)
+
+Focus on hands-on practice - build actual CI/CD pipelines and deploy applications using these services.
+
 1. How will you handle a situation where your application, running on an EC2 instance, experiences high traffic or a spike during business hours?
 
 Your answer is **mostly correct and interview-ready**, but it can be **strengthened technically and strategically**. I’ll first correct/improve it, then add **extra inputs** that interviewers like to hear from a DevOps engineer.
@@ -383,16 +442,562 @@ If you want, next I can:
 * 🔥 Ask **follow-up scenario questions**
 * 🔥 Convert this into **AWS CLI validation steps**
 
+Below are **clear, step-by-step AWS Console checks** to troubleshoot **EC2 internet access issues (private subnet + NAT setup)**.
+This is **exactly how you’d do it in production** and how interviewers expect you to explain it.
+
+---
+
+# ✅ Step-by-Step: Check Internet Access for EC2 (AWS Console)
+
+---
+
+## **STEP 1: Identify the EC2 Subnet (Public or Private)**
+
+1. Open **AWS Console**
+2. Go to **EC2 → Instances**
+3. Select your **EC2 instance**
+4. In the **Details tab**, note:
+
+   * **Subnet ID**
+   * **VPC ID**
+
+👉 Click the **Subnet ID** (it opens the VPC console)
+
+---
+
+## **STEP 2: Check the Subnet Route Table**
+
+1. In **VPC → Subnets**
+2. Select the subnet
+3. Go to **Route table** tab
+4. Click the **Route Table ID**
+
+### 🔍 What to Verify
+
+### For **Private Subnet**
+
+You MUST see:
+
+```
+Destination: 0.0.0.0/0
+Target: nat-xxxxxxxx (NAT Gateway)
+```
+
+❌ If missing → instance cannot access internet
+
+---
+
+### For **Public Subnet**
+
+You MUST see:
+
+```
+Destination: 0.0.0.0/0
+Target: igw-xxxxxxxx (Internet Gateway)
+```
+
+---
+
+## **STEP 3: Verify NAT Gateway Configuration**
+
+1. Go to **VPC → NAT Gateways**
+2. Select the NAT Gateway
+
+### 🔍 Check the following:
+
+* **State** → `Available`
+* **Subnet** → MUST be a **public subnet**
+* **Elastic IP** → MUST be attached
+
+❌ NAT in private subnet = ❌ no internet
+
+---
+
+## **STEP 4: Verify Public Subnet Has Internet Gateway Route**
+
+1. Go to **VPC → Route Tables**
+2. Find the route table associated with the **NAT Gateway subnet**
+3. Confirm route:
+
+```
+0.0.0.0/0 → Internet Gateway (igw-xxxx)
+```
+
+---
+
+## **STEP 5: Check Internet Gateway (IGW)**
+
+1. Go to **VPC → Internet Gateways**
+2. Confirm:
+
+   * IGW exists
+   * **Attached to the correct VPC**
+
+❌ No IGW attached = ❌ no outbound internet
+
+---
+
+## **STEP 6: Check Security Group (Outbound Rules)**
+
+1. Go to **EC2 → Instances**
+2. Select the instance
+3. Click **Security Group**
+4. Go to **Outbound rules**
+
+### 🔍 Ensure outbound allows:
+
+```
+HTTP  (80)   → 0.0.0.0/0
+HTTPS (443)  → 0.0.0.0/0
+DNS   (53)   → 0.0.0.0/0
+```
+
+(Default SG allows all outbound, but still verify.)
+
+---
+
+## **STEP 7: Check Network ACL (NACL)**
+
+1. Go to **VPC → Network ACLs**
+2. Select the NACL associated with the subnet
+
+### 🔍 Ensure:
+
+**Outbound rules**
+
+```
+Allow 80, 443
+Allow Ephemeral Ports (1024–65535)
+```
+
+**Inbound rules**
+
+```
+Allow Ephemeral Ports (1024–65535)
+```
+
+❌ Missing ephemeral ports = broken return traffic
+
+---
+
+## **STEP 8: Verify DNS Settings**
+
+1. Go to **VPC → Your VPCs**
+2. Select the VPC
+3. Click **Actions → Edit DNS settings**
+
+Ensure:
+
+* ✅ Enable DNS resolution
+* ✅ Enable DNS hostnames
+
+---
+
+## **STEP 9: Final OS-Level Check (Optional but Pro-Level)**
+
+If everything looks correct in AWS:
+
+* SSH into EC2
+* Test:
+
+```bash
+curl https://google.com
+nslookup google.com
+```
+
+Check:
+
+* Proxy settings
+* iptables / firewalld
+
+---
+
+# 🔑 Interview-Friendly Summary (Say This)
+
+> First, I identify whether the EC2 is in a public or private subnet.
+> For a private subnet, I verify the route table points 0.0.0.0/0 to a NAT Gateway that is deployed in a public subnet with an Internet Gateway.
+> Then I check security groups, NACLs, DNS settings, and finally OS-level connectivity.
+
+---
+
+If you want next:
+
+* 🔥 **Diagram-based explanation**
+* 🔥 **AWS CLI commands for the same checks**
+* 🔥 **Common mistakes interviewers expect you to catch**
+
+Just tell me 👍
+
 
 ****************************************************************************************************************************************************************
+4. What is NAT gateway
 
-4. If you have accidentally deleted data from an S3 bucket, or someone else has, and you need to restore it, how will you do this? (8:40 - 8:49)
+what is nat gateway
 
-If versioning is enabled on the S3 bucket, the data can be recovered from older versions. If versioning is not enabled, the candidate is unsure if recovery is possible without AWS support or AWS backup.
+> A NAT Gateway (Network Address Translation Gateway) is an AWS managed service that allows instances in private subnets to connect to the internet while
+preventing inbound connections from the internet.
 
-5. How will you connect your on-prem data center with your AWS cloud? (10:00 - 10:07)
-Considering a scenario where you have two VPCs, with a front-end application on an EC2 instance in one VPC and a back-end service on an EC2 instance in another VPC, and they cannot communicate, what issues might be present and how can they be fixed? (10:47 - 11:24)
-If you have an application running on an EC2 machine that needs to fetch objects (like icons) stored in an AWS S3 bucket, but it's not able to, how can you enable communication between the EC2 application and the S3 bucket? (12:53 - 13:16)
+Key Purpose
+• Enables outbound internet access for private subnet resources
+• Blocks unsolicited inbound connections from the internet
+• Provides security by keeping instances private
+
+How It Works
+1. Private instance sends request to NAT Gateway
+2. NAT Gateway translates private IP to its own public IP
+3. NAT Gateway forwards request to internet
+4. Response comes back to NAT Gateway
+5. NAT Gateway translates back and sends to private instance
+
+Common Use Cases
+• Software updates and patches
+• Downloading packages/dependencies
+• API calls to external services
+• Database instances that need internet access
+
+Setup Requirements
+• NAT Gateway must be in a public subnet
+• Private subnet route table needs route: 0.0.0.0/0 → NAT Gateway
+• Public subnet route table needs route: 0.0.0.0/0 → Internet Gateway
+
+NAT Gateway vs NAT Instance
+• **NAT Gateway**: AWS managed, highly available, auto-scaling, no maintenance
+• **NAT Instance**: Self-managed EC2 instance, requires patching, single point of failure
+
+Cost Considerations
+• Charged per hour + data processing fees
+• For high availability, deploy one NAT Gateway per AZ
+• Can be expensive for high data transfer volumes
+
+Alternative: VPC Endpoints for AWS services (S3, DynamoDB) to avoid NAT Gateway costs for AWS API calls.
+****************************************************************************************************************************************************************
+5. If you have accidentally deleted data from an S3 bucket, or someone else has, and you need to restore it, how will you do this?
+
+> Here are the methods to restore deleted S3 data, depending on your bucket configuration:
+
+1. S3 Versioning (Best Option)
+If versioning was enabled before deletion:
+bash
+# List all versions including delete markers
+aws s3api list-object-versions --bucket my-bucket --prefix path/to/file
+
+# Remove delete marker to restore latest version
+aws s3api delete-object --bucket my-bucket --key path/to/file --version-id "delete-marker-id"
+
+# Or restore specific version
+aws s3api copy-object --copy-source "my-bucket/path/to/file?versionId=version-id" --bucket my-bucket --key path/to/file
+
+
+2. S3 Cross-Region Replication (CRR)
+If CRR was configured:
+• Copy objects back from the replica bucket
+• Objects in destination bucket remain intact even if source is deleted
+
+3. AWS Backup
+If using AWS Backup service:
+• Go to AWS Backup console
+• Find the backup vault and recovery point
+• Restore from the backup
+
+4. Third-Party Backups
+• Restore from external backup solutions (Veeam, Commvault, etc.)
+• Copy from local backups if you had sync processes
+
+5. CloudTrail Investigation
+Check who deleted what and when:
+bash
+aws logs filter-log-events --log-group-name CloudTrail/S3DataEvents --filter-pattern "{ $.eventName = DeleteObject }"
+
+
+Prevention for Future
+• Enable versioning: aws s3api put-bucket-versioning --bucket my-bucket --versioning-configuration Status=Enabled
+• Enable MFA Delete for extra protection
+• Set up Cross-Region Replication
+• Use S3 Object Lock for compliance
+• Implement lifecycle policies instead of manual deletion
+
+Important: If versioning wasn't enabled before deletion, the data is permanently lost unless you have external backups. Always enable versioning on critical
+buckets.
+
+Your answer is **partially correct**, but it needs **strong clarification and confidence**. Interviewers expect you to clearly state **what is possible and what is NOT**, and also mention **preventive controls**.
+
+I’ll first correct your answer, then give an **interview-ready response**, followed by **extra points** and **common traps**.
+
+---
+
+## What You Got Right ✅
+
+* ✔ Correctly identified **S3 Versioning** as the primary recovery mechanism
+* ✔ Correctly implied that recovery is difficult without versioning
+
+---
+
+## What Needs Correction ❗
+
+* **AWS Support cannot recover permanently deleted S3 objects**
+* Recovery **without versioning is NOT possible** unless:
+
+  * You have a backup (AWS Backup, replication, external copy)
+* Your answer sounds uncertain — interviews require **clear yes/no**
+
+---
+
+## Corrected & Clear Explanation
+
+### Case 1️⃣: **Versioning ENABLED** ✅
+
+* Deleted object → becomes a **delete marker**
+* Older versions are still present
+* Recovery steps:
+
+  * Remove delete marker
+  * Restore a previous version
+
+✔ Data **can be restored**
+
+---
+
+### Case 2️⃣: **Versioning NOT ENABLED** ❌
+
+* Object deletion is **permanent**
+* AWS **cannot recover it**
+* Only recovery options:
+
+  * AWS Backup
+  * Cross-region replication copy
+  * Application-level backup
+  * External backup system
+
+❌ No native recovery from S3 itself
+
+---
+
+## Interview-Ready Answer (Best Version)
+
+> If S3 versioning is enabled, deleted objects can be recovered by restoring a previous version or removing the delete marker.
+>
+> If versioning is not enabled, S3 does not provide any native recovery mechanism, and even AWS Support cannot restore the data. In that case, recovery is only possible if there is a backup solution in place, such as AWS Backup, cross-region replication, or an external backup.
+>
+> To prevent such situations, I would enable versioning, MFA delete, lifecycle policies, and regular backups on critical buckets.
+
+---
+
+## Bonus Points (Say Any 2–3) 💯
+
+### 🔹 MFA Delete
+
+* Prevents accidental or malicious deletions
+* Requires MFA to permanently delete objects
+
+---
+
+### 🔹 S3 Replication
+
+* Cross-Region Replication (CRR)
+* Same-Region Replication (SRR)
+
+---
+
+### 🔹 AWS Backup
+
+* Centralized backup management
+* Restore from point-in-time backups
+
+---
+
+### 🔹 Lifecycle Policies
+
+* Protect current versions
+* Archive to Glacier instead of delete
+
+---
+
+## One-Line Strong Answer (If Time Is Short)
+
+> With versioning enabled, I can restore deleted objects from previous versions. Without versioning or backups, S3 data deletion is permanent and unrecoverable, even by AWS Support.
+
+---
+
+## Common Interview Trap 🚨
+
+❌ Saying *“AWS Support can recover deleted S3 data”*
+✔ Correct answer: **They cannot**
+
+---
+
+If you want next:
+
+* 🔥 **Console steps to restore a versioned object**
+* 🔥 **AWS CLI commands**
+* 🔥 **Real production scenario explanation**
+* 🔥 **Follow-up interview questions**
+
+Just tell me 👍
+
+****************************************************************************************************************************************************************
+5. How will you connect your on-prem data center with your AWS cloud?
+
+> There are several ways to connect on-premises data centers to AWS cloud:
+
+1. AWS Direct Connect (Dedicated Connection)
+• **What**: Dedicated network connection from your data center to AWS
+• **Bandwidth**: 1Gbps to 100Gbps
+• **Benefits**: Consistent performance, lower latency, reduced bandwidth costs
+• **Use Case**: High bandwidth requirements, predictable workloads
+• **Setup**: Physical cross-connect at AWS Direct Connect location
+
+2. Site-to-Site VPN
+• **What**: Encrypted tunnel over the internet
+• **Bandwidth**: Up to 1.25Gbps per tunnel
+• **Benefits**: Quick setup, cost-effective, encrypted
+• **Use Case**: Lower bandwidth needs, temporary connections
+• **Components**: Customer Gateway + Virtual Private Gateway/Transit Gateway
+
+3. AWS Transit Gateway
+• **What**: Central hub for connecting multiple VPCs and on-premises
+• **Benefits**: Simplifies network architecture, scalable
+• **Use Case**: Multiple VPCs, complex routing requirements
+• **Works with**: Direct Connect, VPN, VPC peering
+
+4. AWS Direct Connect Gateway
+• **What**: Connects Direct Connect to multiple VPCs across regions
+• **Benefits**: Single Direct Connect to multiple VPCs/regions
+• **Use Case**: Multi-region deployments with Direct Connect
+
+5. AWS VPN CloudHub
+• **What**: Multiple site-to-site VPN connections through single VGW
+• **Benefits**: Hub-and-spoke model for multiple sites
+• **Use Case**: Multiple branch offices connecting to AWS and each other
+
+Hybrid Connectivity Options:
+• **Direct Connect + VPN**: Redundancy (Direct Connect primary, VPN backup)
+• **Multiple Direct Connect**: High availability across different locations
+• **Transit Gateway + Direct Connect**: Centralized connectivity for complex networks
+
+Decision Factors:
+• **Bandwidth needs**: Direct Connect for high bandwidth, VPN for moderate
+• **Latency requirements**: Direct Connect for consistent low latency
+• **Cost**: VPN cheaper for low usage, Direct Connect better for high usage
+• **Security**: Both provide encryption (VPN native, Direct Connect via MACsec)
+• **Setup time**: VPN (hours), Direct Connect (weeks/months)
+
+Common Architecture:
+On-Premises ← Direct Connect → Direct Connect Gateway → Transit Gateway → Multiple VPCs
+            ← VPN (backup) →   Virtual Private Gateway →
+
+
+Most enterprises use a combination: Direct Connect for primary connectivity with VPN as backup for redundancy.
+
+
+****************************************************************************************************************************************************************
+6. Considering a scenario where you have two VPCs, with a front-end application on an EC2 instance in one VPC and a back-end service on an EC2 instance in another
+VPC, and they cannot communicate, what issues might be present and how can they be fixed? 
+
+> Here are the common issues preventing communication between VPCs and their solutions:
+
+1. No VPC Peering Connection
+Problem: VPCs are isolated by default - no network path exists
+Solution:
+bash
+# Create VPC peering connection
+aws ec2 create-vpc-peering-connection --vpc-id vpc-12345678 --peer-vpc-id vpc-87654321
+
+# Accept the peering connection
+aws ec2 accept-vpc-peering-connection --vpc-peering-connection-id pcx-1234567890abcdef0
+
+
+2. Missing Route Table Entries
+Problem: No routes pointing to the peered VPC
+Solution: Add routes in both VPC route tables
+bash
+# VPC A route table - route to VPC B CIDR
+aws ec2 create-route --route-table-id rtb-12345678 --destination-cidr-block 10.1.0.0/16 --vpc-peering-connection-id pcx-1234567890abcdef0
+
+# VPC B route table - route to VPC A CIDR
+aws ec2 create-route --route-table-id rtb-87654321 --destination-cidr-block 10.0.0.0/16 --vpc-peering-connection-id pcx-1234567890abcdef0
+
+
+3. Security Group Rules
+Problem: Security groups blocking traffic between VPCs
+Solution: Allow inbound traffic from the other VPC's security group or CIDR
+bash
+# Allow traffic from VPC B to VPC A backend
+aws ec2 authorize-security-group-ingress --group-id sg-backend --protocol tcp --port 8080 --source-group sg-frontend
+
+# Or use CIDR blocks
+aws ec2 authorize-security-group-ingress --group-id sg-backend --protocol tcp --port 8080 --cidr 10.0.0.0/16
+
+
+4. Network ACL Restrictions
+Problem: NACLs denying traffic (less common but possible)
+Solution: Check and modify NACL rules to allow traffic
+bash
+# Check NACL rules
+aws ec2 describe-network-acls --network-acl-ids acl-12345678
+
+# Add allow rule if needed
+aws ec2 create-network-acl-entry --network-acl-id acl-12345678 --rule-number 100 --protocol tcp --port-range From=8080,To=8080 --cidr-block 10.0.0.0/16
+
+
+5. Overlapping CIDR Blocks
+Problem: VPCs have overlapping IP ranges (can't peer)
+Solution:
+• Recreate one VPC with non-overlapping CIDR
+• Use Transit Gateway instead of VPC peering
+• Use NAT Gateway for specific use cases
+
+6. DNS Resolution Issues
+Problem: Can't resolve private DNS names across VPCs
+Solution: Enable DNS resolution for VPC peering
+bash
+aws ec2 modify-vpc-peering-connection-options --vpc-peering-connection-id pcx-1234567890abcdef0 --requester-peering-connection-options AllowDnsResolutionFromRemoteVpc=true --accepter-peering-connection-options AllowDnsResolutionFromRemoteVpc=true
+
+
+Alternative Solutions:
+
+Transit Gateway (Better for multiple VPCs):
+bash
+# Create Transit Gateway
+aws ec2 create-transit-gateway --description "Multi-VPC connectivity"
+
+# Attach VPCs
+aws ec2 create-transit-gateway-vpc-attachment --transit-gateway-id tgw-12345678 --vpc-id vpc-12345678 --subnet-ids subnet-12345678
+
+
+AWS PrivateLink (Service-to-service communication):
+• Create VPC endpoint service in backend VPC
+• Create VPC endpoint in frontend VPC
+• More secure, doesn't require route table changes
+
+Troubleshooting Steps:
+1. Verify VPC peering connection status
+2. Check route tables in both VPCs
+3. Test security group rules
+4. Verify NACL rules
+5. Test connectivity with telnet or nc
+6. Check DNS resolution if using hostnames
+
+Quick Test:
+bash
+# From frontend EC2, test backend connectivity
+telnet <backend-private-ip> <port>
+nc -zv <backend-private-ip> <port>
+
+****************************************************************************************************************************************************************
+7. If you have an application running on an EC2 machine that needs to fetch objects (like icons) stored in an AWS S3 bucket, but it's not able to, how can you enable communication between the EC2 application and the S3 bucket?
+
+
+1. No VPC Peering Connection
+Problem: VPCs are isolated by default - no network path exists
+Solution:
+bash
+# Create VPC peering connection
+aws ec2 create-vpc-peering-connection --vpc-id vpc-12345678 --peer-vpc-id vpc-87654321
+
+# Accept the peering connection
+aws ec2 accept-vpc-peering-connection --vpc-peering-connection-id pcx-1234567890abcdef0
+
+****************************************************************************************************************************************************************
 Can you explain the architecture of Kubernetes briefly? (14:13 - 14:15)
 How will you upgrade your EKS cluster, including its nodes? (15:49 - 16:01)
 If you have an application running on an AKS pod with multiple nodes, and you want to ensure that 10 pods (e.g., for Prometheus or Filebeat) are scheduled across all nodes for data scraping, how will you ensure this distribution of pods to the nodes? (16:40 - 17:12)
@@ -406,58 +1011,3 @@ If you are running a Linux script (e.g., for user creation) and get a "permissio
 If your Linux server is performing very slowly, how will you troubleshoot this slow performance, and what commands will you use? 
 
 
-
-A: If versioning is enabled on the S3 bucket, the data can be recovered from older versions. If versioning is not enabled, the candidate is unsure if recovery is possible without AWS support or AWS backup. (8:56-9:43)
-Q: How will you connect your on-premise data center with your AWS cloud? (10:04-10:07)
-
-A: The candidate would use VPN Site-to-Site connection or Direct Connect, which are two services provided by AWS for this purpose. (10:13-10:38)
-Q: You have two VPCs with EC2 instances. One has the front end, and the other has the backend for the same application. They need to communicate, but they are not. What issues can be there, and how can you fix this? (10:47-11:24)
-
-A: To establish connectivity between EC2s in different VPCs, even within the same AWS account, VPC peering needs to be enabled. One VPC initiates the request, and the other accepts it. Additionally, route table rules must be added in both VPCs, specifying the CIDR ranges of the peered VPCs. (11:31-12:42)
-Q: Your application on an EC2 machine needs to fetch objects (icons) from an AWS S3 bucket but cannot. How can you enable communication between the EC2 application and the S3 bucket? (12:53-13:17)
-
-A: First, create an IAM role with appropriate S3 permissions (read, write, or full access). Then, attach this IAM role to the EC2 instance from the AWS console. (13:23-14:05)
-Kubernetes
-
-Q: Can you explain the architecture of Kubernetes in brief? (14:13-14:15)
-
-A: Kubernetes consists of a master node and worker nodes. The master node has processes like the API server, scheduler, etcd, and controller. Worker nodes have components like kube-proxy, which manages networking on each node. (14:23-15:23)
-Q: How will you upgrade your EKS cluster, including your nodes? (15:49-16:01)
-
-A: Before upgrading, manage ongoing pods by using drain or cordon commands to remove pods from nodes. Then, upgrade the node. After the upgrade, use uncordon to schedule pods back onto the node. (16:01-16:32)
-Q: You have 10 pods, and you want them all to be scheduled over all the nodes running (e.g., for Prometheus or Filebeat). How will you ensure this distribution of pods to the nodes? (16:40-17:12)
-
-A: To schedule one pod per node, use a DaemonSet. Alternatively, for distributing pods equally, Pod Anti-Affinity can be used in the deployment file to ensure only one pod is scheduled on a particular node. (17:19-18:08)
-Q: You have an application running on a Kubernetes pod, and you want to access it from a browser by hitting "ringi.com". How will you set this up? (18:29-18:58)
-
-A: Along with deployment files, you need to add Service and Ingress files. The Service of type Load Balancer will create an actual load balancer on AWS that routes requests to the Ingress controller. The Ingress controller, sitting at the cluster's entry point, reads rules from the Ingress file and routes requests to the destined pods. Finally, in Route 53, the domain name "ringi.com" is configured to point to this load balancer. (18:58-21:06)
-Terraform
-
-Q: You have to create 10 EC2 machines with the same configuration. What will you use in Terraform? (21:32-21:36)
-
-A: Use the count variable inside the resource block for the EC2 machine, setting count equal to the number of instances desired. (21:43-22:07)
-Q: You have a VPC created manually, and you need to create an EC2 machine using Terraform within this existing VPC. How will you ensure this? (22:13-22:32)
-
-A: Two ways: either directly copy the VPC ID from the console and provide it in the EC2 resource block, or use a data block in Terraform. The data block can fetch details of existing resources by filtering on information like the VPC name or tags, and then extract the VPC ID. (22:39-23:42)
-Q: You have a VPC created with Terraform, but someone manually deleted that resource. If you run terraform apply again, what will happen? Will the resource be provisioned again? (24:09-24:29)
-
-A: Yes, if terraform apply is run again, Terraform will compare the configuration file with the actual infrastructure on AWS. Since the VPC is missing, it will detect the discrepancy and attempt to provision it again with the same name and configuration. (24:36-25:03)
-Q: You have one module for VPC and another for EC2 instances. You need to provision both together, passing the output of the first module (VPC ID) to the second module (EC2) so it can utilize it. How will you set this up? (25:08-25:48)
-
-A: Define output blocks in the first module (VPC) to output the VPC ID. In the second module (EC2), reference this output as a normal variable using the syntax module.output_variable_name. Additionally, a depends_on block can be added in the EC2 module to ensure it's created only after the VPC. (25:56-27:00)
-Jenkins
-
-Q: Can you explain the stages you have written in your Jenkins pipeline to deploy your application or any kind of pipeline you have written? (27:04-27:12)
-A: For a simple Java application, the stages would typically include: Checkout (code), Build, Test (if test cases are written), and Deployment. The specific stages can vary based on the application type and setup. (27:16-27:44)
-Linux
-
-Q: You are trying to run a script (e.g., for user creation) and are getting a "permission denied" error. What steps will you take to troubleshoot this? (27:53-28:05)
-
-A: The user running the script might not have execute permission, or the script's permissions themselves might not include executable rights (e.g., 777 permissions where 1 is for execute). The solution is to change the mode of the file using chmod +x filename to add executable permission on top of existing permissions. (28:11-29:11)
-Q: Your Linux server is performing very slowly. How will you troubleshoot this slow performance, and what commands will you use? (29:20-29:31)
-
-A: The candidate would log into the server and check RAM, CPU, and disk usages.
-For RAM: free -mh to see total, used, free, and cache memory. (30:11-30:20)
-For Disk: df -h to check disk usage, especially for the root partition (should be below 80%). (30:30-30:50)
-To identify processes consuming high CPU/RAM: htop command. This provides an interactive UI where processes can be sorted by CPU or memory percentage. If a process is identified, it can be killed (sudo kill process_id) or its service restarted to free up resources. (30:52-31:39)
-Proactive measures include setting up daily/hourly cron jobs for CPU, RAM, and disk checks, and configuring SMTP alerts if usage goes high to take action before customer complaints. (31:41-32:11)
