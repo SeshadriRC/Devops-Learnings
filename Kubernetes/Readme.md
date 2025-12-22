@@ -1200,3 +1200,226 @@ Events:                   <none>
 ```
 
 ## Ingress-lab1
+
+1. Which namespace is the Ingress Resource deployed in?
+
+```
+controlplane ~ ➜  k get ingress -A
+NAMESPACE   NAME                 CLASS    HOSTS   ADDRESS        PORTS   AGE
+app-space   ingress-wear-watch   <none>   *       172.20.47.69   80      7m37s
+```
+
+2. What is the Host configured on the Ingress Resource?
+
+The host entry defines the domain name that users use to reach the application like www.google.com
+
+```
+controlplane ~ ➜  k get ingress -A
+NAMESPACE   NAME                 CLASS    HOSTS   ADDRESS        PORTS   AGE
+app-space   ingress-wear-watch   <none>   *       172.20.47.69   80      7m37s
+
+it set to * , so all hosts are applicable
+```
+
+3. What backend is the /wear path on the Ingress configured with?
+
+```
+Run the command: kubectl describe ingress --namespace app-space and look under the Rules section.
+
+controlplane ~ ➜  k describe ingress ingress-wear-watch -n app-space 
+Name:             ingress-wear-watch
+Labels:           <none>
+Namespace:        app-space
+Address:          172.20.47.69
+Ingress Class:    <none>
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *           
+              /wear    wear-service:8080 (172.17.0.4:8080)
+              /watch   video-service:8080 (172.17.0.5:8080)
+Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
+              nginx.ingress.kubernetes.io/ssl-redirect: false
+Events:
+  Type    Reason  Age                From                      Message
+  ----    ------  ----               ----                      -------
+  Normal  Sync    11m (x2 over 11m)  nginx-ingress-controller  Scheduled for sync
+
+Answer: wear-service
+```
+
+4. At what path is the video streaming application made available on the Ingress?
+
+```
+Run the command: kubectl describe ingress --namespace app-space and look under the Rules section.
+
+/watch 
+```
+
+5. If the requirement does not match any of the configured paths in the Ingress, to which service are the requests forwarded?
+
+```
+Execute the command kubectl describe ingress --namespace app-space and examine the Default backend field. If it displays <default>, proceed to inspect the ingress controller's manifest by executing kubectl get deploy ingress-nginx-controller -n ingress-nginx -o yaml. In the manifest, search for the argument --default-backend-service
+
+controlplane ~ ➜  kubectl get deploy ingress-nginx-controller -n ingress-nginx -o yaml | grep default
+        - --default-backend-service=app-space/default-backend-service
+      schedulerName: default-scheduler
+          defaultMode: 420
+
+```
+
+6. You are requested to change the URLs at which the applications are made available.
+
+Make the video application available at /stream.
+
+- Below is the ingress yaml
+  
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  creationTimestamp: "2025-12-22T13:37:48Z"
+  generation: 2
+  name: ingress-wear-watch
+  namespace: app-space
+  resourceVersion: "3010"
+  uid: 53be3562-c9a8-4b0f-995d-95c0eb5175fe
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: wear-service
+            port:
+              number: 8080
+        path: /wear
+        pathType: Prefix
+      - backend:
+          service:
+            name: video-service
+            port:
+              number: 8080
+        path: /stream
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 172.20.47.69
+
+```
+
+7. You are requested to add a new path to your ingress to make the food delivery application available to your customers.
+   Make the new application available at /eat.
+   
+   ```
+   Run the command: kubectl edit ingress --namespace app-space and add a new Path entry for the new service.
+   ```
+```
+controlplane ~ ✖ k get svc -A
+NAMESPACE       NAME                                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+app-space       default-backend-service              ClusterIP   172.20.72.130    <none>        80/TCP                       35m
+app-space       food-service                         ClusterIP   172.20.211.219   <none>        8080/TCP                     6m21s
+app-space       video-service                        ClusterIP   172.20.80.238    <none>        8080/TCP                     35m
+
+controlplane ~ ➜  k get pods -A | grep food
+app-space       webapp-food-5b4489ff8-2fzjf                 1/1     Running     0          7m16s
+
+```
+
+   ```yaml
+
+   Solution manifest file to add a new path to our ingress service to make the application available at /eat as follows:
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  name: ingress-wear-watch
+  namespace: app-space
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: wear-service
+            port: 
+              number: 8080
+        path: /wear
+        pathType: Prefix
+      - backend:
+          service:
+            name: video-service
+            port: 
+              number: 8080
+        path: /stream
+        pathType: Prefix
+      - backend:
+          service:
+            name: food-service
+            port: 
+              number: 8080
+        path: /eat
+        pathType: Prefix
+
+   ```
+
+8. You are requested to create the ingress name as critical-ingress to make the new application available at /pay.
+
+
+Identify and implement the best approach to making this application available on the ingress controller and test to make sure its working.
+
+Look into annotations: rewrite-target as well.
+
+```
+controlplane ~ ➜  k get all -n critical-space
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/webapp-pay-85946fb65b-85dqp   1/1     Running   0          96s
+
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/pay-service   ClusterIP   172.20.28.100   <none>        8282/TCP   96s
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/webapp-pay   1/1     1            1           96s
+
+NAME                                    DESIRED   CURRENT   READY   AGE
+replicaset.apps/webapp-pay-85946fb65b   1         1         1       96s
+
+controlplane ~ ➜
+
+
+hint:
+Create a new Ingress for the new pay application in the critical-space namespace.
+
+Use the command kubectl get svc -n critical-space to know the service and port details.
+```
+
+```yaml
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: critical-ingress
+  namespace: critical-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /pay
+        pathType: Prefix
+        backend:
+          service:
+           name: pay-service
+           port:
+            number: 8282
+```
