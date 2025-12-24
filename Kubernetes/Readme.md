@@ -26,6 +26,7 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
   - [Core-DNS-Lab](#core-dns-lab)
   - [Ingress-networking-lab1](#Ingress-lab1)
   - [Ingress-networking-lab2](#Ingress-lab2)
+  - [Gateway-api](#gateway-api-lab)
 
 
 # Networking
@@ -1685,4 +1686,101 @@ spec:
            name: video-service
            port:
             number: 8080
+```
+
+## gateway-api-lab
+
+1. Which API resource is used to define a Gateway in Kubernetes?
+
+```
+The Gateway resource is used to define an instance of a Gateway API implementation in Kubernetes.
+It acts as an entry point for external traffic into the cluster.
+
+The GatewayClass resource defines a type of Gateway (i.e., the controller and its capabilities),
+but does not create an actual Gateway instance.
+
+To actually deploy a Gateway that routes traffic, you must create a Gateway resource.
+```
+
+2. What is the purpose of the allowedRoutes field in a Gateway?
+
+The allowedRoutes field in a Gateway listener determines which namespaces and types of Routes (like HTTPRoute, TCPRoute, etc.) are allowed to attach to that Gateway.
+
+By default, only Routes in the same namespace as the Gateway can attach.
+Setting namespaces.from: All allows Routes from all namespaces to attach.
+You can also restrict which kinds of Routes can attach using the kinds field.
+This enables fine-grained access control and safe multi-tenant routing.
+Example:
+```
+spec:
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All  # Allows Routes from all namespaces to attach
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: HTTPRoute
+```
+
+3. Which of the following protocols is NOT supported by the Kubernetes Gateway API?
+
+The Kubernetes Gateway API supports HTTP, HTTPS, TCP, UDP, and TLS protocols.
+However, ICMP is not supported, as it is not a transport-layer protocol used for application traffic.
+
+4. How does a GatewayClass differ from a Gateway?
+
+A GatewayClass is similar to an IngressClass; it defines the controller-specific behavior of a Gateway.
+A Gateway is an instance that references a GatewayClass to determine its underlying implementation.
+
+In short:
+
+GatewayClass: The template or type.
+Gateway: The deployed instance that uses the template.
+
+5. What is the primary advantage of using Gateway API over Ingress?
+
+The Gateway API provides more advanced routing capabilities than Ingress, including:
+
+Multi-protocol support (HTTP, TCP, UDP, etc.)
+Better extensibility with Routes and Filters
+More granular access control using AllowedRoutes
+Unlike Ingress, which is primarily HTTP-based, Gateway API is designed for flexibility across multiple protocols.
+
+6. To use the Gateway API, a controller is required. In this lab, we will install NGINX Gateway Fabric as the controller. Follow these steps to complete the installation:
+
+1. Install the Gateway API resources
+```
+kubectl kustomize "https://github.com/nginx/nginx-gateway-fabric/config/crd/gateway-api/standard?ref=v1.5.1" | kubectl apply -f -
+```
+2. Deploy the NGINX Gateway Fabric CRDs
+```
+kubectl apply -f https://raw.githubusercontent.com/nginx/nginx-gateway-fabric/v1.6.1/deploy/crds.yaml
+```
+3. Deploy NGINX Gateway Fabric
+
+```
+kubectl apply -f https://raw.githubusercontent.com/nginx/nginx-gateway-fabric/v1.6.1/deploy/nodeport/deploy.yaml
+```
+4. Verify the Deployment
+
+```
+kubectl get pods -n nginx-gateway
+```
+
+5. View the nginx-gateway service
+
+```
+kubectl get svc -n nginx-gateway nginx-gateway -o yaml
+```
+
+6. Update the nginx-gateway service to expose ports 30080 for HTTP and 30081 for HTTPS
+
+```
+kubectl patch svc nginx-gateway -n nginx-gateway --type='json' -p='[
+  {"op": "replace", "path": "/spec/ports/0/nodePort", "value": 30080},
+  {"op": "replace", "path": "/spec/ports/1/nodePort", "value": 30081}
+]'
 ```
