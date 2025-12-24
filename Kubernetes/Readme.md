@@ -1,8 +1,13 @@
 ## Notes
 
 https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Introduction/Course-Introduction
+
 Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
 
+**Pending**
+
+- kubernetes the hard way - 255 ( https://cognizant.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/learn/lecture/22498956#overview )
+- 
 
 
 # Service
