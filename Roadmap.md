@@ -2,6 +2,278 @@
 - [Networking](#networking)
 
 
+That’s an **excellent approach** 👍
+Learning **one technology per day with practicals** is exactly how good DevOps engineers are built.
+
+Let’s make this **structured, realistic, and hands-on** (not just theory).
+
+---
+
+# ✅ Daily DevOps Learning Plan (Practical-First)
+
+## 🗓️ How your daily learning should look (2–3 hours)
+
+Each day:
+
+1. **30 min** – Core concepts (why + what)
+2. **90 min** – Hands-on practice
+3. **30 min** – Troubleshooting + notes
+
+---
+
+# 🔥 Day-wise Technology Roadmap (Practical Focus)
+
+## 🧱 WEEK 1: Linux + Networking (Foundation)
+
+### 📌 Day 1 – Linux Basics
+
+**Practice**
+
+* Navigate filesystem
+* Create users
+* Permissions
+* Services
+
+Commands:
+
+```bash
+ls cd pwd
+useradd passwd
+chmod chown
+systemctl
+```
+
+---
+
+### 📌 Day 2 – Linux Process & Logs
+
+**Practice**
+
+* ps, top, kill
+* journalctl
+* system logs
+
+---
+
+### 📌 Day 3 – Networking Basics
+
+**Practice**
+
+* IP address
+* ping
+* traceroute
+* netstat / ss
+
+---
+
+### 📌 Day 4 – Subnetting & CIDR
+
+**Practice**
+
+* Calculate `/24`, `/20`, `/16`
+* Design VPC CIDR
+* Avoid overlaps
+
+---
+
+### 📌 Day 5 – DNS & Ports
+
+**Practice**
+
+* nslookup
+* dig
+* curl
+* telnet
+
+---
+
+### 📌 Day 6 – Firewalls & Security
+
+**Practice**
+
+* iptables / firewalld (basics)
+* AWS Security Group concepts
+
+---
+
+### 📌 Day 7 – Weekly Revision + Troubleshooting
+
+**Practice**
+
+* Debug “app not reachable” scenario
+* Identify layer-wise issue
+
+---
+
+# ☁️ WEEK 2: Cloud (AWS Core)
+
+### 📌 Day 8 – AWS IAM
+
+**Practice**
+
+* Users, Roles, Policies
+* Least privilege
+
+---
+
+### 📌 Day 9 – VPC Deep Dive
+
+**Practice**
+
+* Create VPC
+* Public & Private Subnets
+* Route tables
+
+---
+
+### 📌 Day 10 – EC2
+
+**Practice**
+
+* Launch instance
+* SSH access
+* Security groups
+
+---
+
+### 📌 Day 11 – Load Balancer
+
+**Practice**
+
+* ALB vs NLB
+* Health checks
+
+---
+
+### 📌 Day 12 – S3 & RDS
+
+**Practice**
+
+* Access control
+* Connectivity
+
+---
+
+### 📌 Day 13 – Monitoring (CloudWatch)
+
+**Practice**
+
+* Metrics
+* Logs
+* Alarms
+
+---
+
+### 📌 Day 14 – AWS Revision + Scenarios
+
+---
+
+# 🐳 WEEK 3: Docker
+
+### 📌 Day 15 – Containers Basics
+
+**Practice**
+
+* Run containers
+* Inspect images
+
+---
+
+### 📌 Day 16 – Dockerfile
+
+**Practice**
+
+* Build image
+* Push to registry
+
+---
+
+### 📌 Day 17 – Docker Networking & Volumes
+
+---
+
+### 📌 Day 18 – Docker Compose
+
+---
+
+### 📌 Day 19 – Debugging Containers
+
+---
+
+### 📌 Day 20 – Docker Best Practices
+
+---
+
+### 📌 Day 21 – Revision + Mini Project
+
+---
+
+# ☸️ WEEK 4: Kubernetes / OpenShift
+
+### 📌 Day 22 – K8s Architecture
+
+---
+
+### 📌 Day 23 – Pods & Deployments
+
+---
+
+### 📌 Day 24 – Services & Networking
+
+---
+
+### 📌 Day 25 – Ingress / Routes
+
+---
+
+### 📌 Day 26 – ConfigMaps & Secrets
+
+---
+
+### 📌 Day 27 – RBAC & Security
+
+---
+
+### 📌 Day 28 – Troubleshooting
+
+---
+
+### 📌 Day 29 – Helm
+
+---
+
+### 📌 Day 30 – Mini Project (End-to-End)
+
+---
+
+# 🧠 How I’ll Help You Daily
+
+If you follow this:
+
+* I’ll explain **only what’s needed**
+* Give **step-by-step labs**
+* Help debug errors
+* Ask **interview-style questions**
+
+---
+
+## 📌 Important Rule (Stick to This)
+
+❌ Don’t jump tools
+✅ Finish one topic → practice → move next
+
+---
+
+### 👉 NEXT STEP (Start Now)
+
+Say:
+
+> **“Day 1 – Linux basics, start practical”**
+
+I’ll guide you **hands-on, command by command** 💪
+
+
+
 # Devops-roadmap
 
 Good decision 👍
