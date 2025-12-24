@@ -1784,3 +1784,99 @@ kubectl patch svc nginx-gateway -n nginx-gateway --type='json' -p='[
   {"op": "replace", "path": "/spec/ports/1/nodePort", "value": 30081}
 ]'
 ```
+
+7. Create a Kubernetes Gateway resource with the following specifications:
+
+Name: nginx-gateway
+Namespace: nginx-gateway
+Gateway Class Name: nginx
+Listeners:
+Protocol: HTTP
+Port: 80
+Name: http
+Allowed Routes: All namespaces
+
+Prerequisite: Make sure the Gateway API CRDs are installed and a compatible controller (like NGINX Gateway Fabric) is running.
+
+1. Create the Gateway manifest (gateway.yaml):
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: nginx-gateway
+  namespace: nginx-gateway
+spec:
+  gatewayClassName: nginx
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes: 
+        namespaces: 
+          from: All
+```
+
+2. Deploy the manifest:
+```
+kubectl apply -f gateway.yaml
+```
+
+3. To verify the succesfull deployment, run the commands below:
+
+```
+kubectl get gateways -n nginx-gateway
+kubectl describe gateway nginx-gateway -n nginx-gateway
+```
+
+8. A new pod named frontend-app and a service called frontend-svc have been deployed in the default namespace.
+Expose the service on the / path by creating an HTTPRoute named frontend-route.
+
+```
+kubectl get pod,svc -n default
+```
+1. Confirm the pod and service exist:
+
+```
+kubectl get pod,svc -n default
+```
+
+2. Create the HTTPRoute manifest:
+
+Create a file named frontend-route.yaml with the following content:
+```
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: frontend-route
+  namespace: default
+spec:
+  parentRefs:
+    - name: nginx-gateway           # Name of the Gateway
+      namespace: nginx-gateway      # Namespace where the Gateway is deployed
+      sectionName: http             # Attach to the 'http' listener
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: frontend-svc
+          port: 80
+```
+
+- parentRefs attaches the route to the nginx-gateway Gateway in the nginx-gateway namespace, specifically to the http listener.
+- The rule matches all requests with a path prefix of / and forwards them to the frontend-svc service on port 80.
+
+3. Apply the manifest:
+
+```
+kubectl apply -f frontend-route.yaml
+```
+
+4. Verify the HTTPRoute:
+
+```
+kubectl get httproute frontend-route 
+kubectl describe httproute frontend-route 
+```
