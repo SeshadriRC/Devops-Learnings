@@ -220,17 +220,132 @@ mychart/
 
 > A Helm chart consists of metadata in Chart.yaml, configurable values in values.yaml, Kubernetes manifests in templates/, optional dependencies in charts/, and reusable template helpers in _helpers.tpl.
 
-
+---
 # values-file
 
-To override the values in values.yml file
+**Override values in values file**
 
+- To override the values in values.yml file
+
+```
 helm install --set wordpressname="helm tutorials" my-release bitnami/wordpress
+```
 
-it too many values need to be changed , then we can use our custom values file. however instead of = we need to use :, since its a yaml file
+- If too many values need to be changed , then we can use our custom values file. however instead of = we need to use :, since its a yaml file
 
 cat custom-values.yaml
+```yaml
 wordpressname="helm tutorials"
 wordpressemail="seshaec"
-
+```
+```
 helm install --values custom-values.yaml my-release bitnami/wordpress
+```
+
+**Use values file without overriding**
+
+- First pull the chart and uncompress it using the below command. Because if you only pull, then it will create a chart in compressed state. so we need to uncompress it.
+
+```
+helm pull --untar bitnami/wordpress
+```
+
+## 1️⃣ `helm pull bitnami/wordpress`
+
+### What this command does
+
+* Downloads the chart **as a packaged archive**
+* Does **NOT extract** it
+
+### Files created
+
+```bash
+$ ls
+wordpress-24.0.3.tgz
+```
+
+📌 (`24.0.3` is an example version — yours may differ)
+
+### What it means
+
+* `.tgz` = compressed Helm chart
+* Useful for:
+
+  * Offline installs
+  * Sharing charts
+  * Version pinning
+
+
+
+## 2️⃣ `helm pull --untar bitnami/wordpress`
+
+### What this command does
+
+* Downloads **and extracts** the chart
+
+### Files created
+
+```bash
+$ ls
+wordpress/
+```
+
+### Inside the directory
+
+```bash
+$ ls wordpress
+Chart.yaml
+values.yaml
+charts/
+templates/
+README.md
+LICENSE
+```
+
+### And inside `templates/`
+
+```bash
+$ ls wordpress/templates
+deployment.yaml
+service.yaml
+ingress.yaml
+pvc.yaml
+secrets.yaml
+_helpers.tpl
+NOTES.txt
+```
+
+
+
+## 3️⃣ Side-by-side comparison
+
+| Command                               | `ls` output            |
+| ------------------------------------- | ---------------------- |
+| `helm pull bitnami/wordpress`         | `wordpress-24.x.x.tgz` |
+| `helm pull --untar bitnami/wordpress` | `wordpress/`           |
+
+
+
+## 4️⃣ How Helm normally uses these
+
+### Using `.tgz`
+
+```bash
+helm install wp wordpress-24.0.3.tgz
+```
+
+### Using extracted directory
+
+```bash
+helm install <release-name> ./wordpress
+```
+
+
+## 5️⃣ Interview-ready one-liner 🚀
+
+> `helm pull` downloads a packaged chart, while `helm pull --untar` downloads and extracts the chart into a directory.
+
+---
+
+
+
