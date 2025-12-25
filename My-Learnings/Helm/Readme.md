@@ -7,7 +7,7 @@
 
 # Notes
 
-- if you give rollback, then it won't take the old state of database
+- if you give rollback, then it won't take the old state of database. only it will affect kubernetes resources
 
 # Install helm
 
