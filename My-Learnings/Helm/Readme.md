@@ -1,5 +1,6 @@
 - [Install helm](#Install-helm)
 - [Helm-Chart-Structure](#helm-chart-structure)
+- [values-file](#values-file)
 
 # Install helm
 
@@ -219,3 +220,17 @@ mychart/
 
 > A Helm chart consists of metadata in Chart.yaml, configurable values in values.yaml, Kubernetes manifests in templates/, optional dependencies in charts/, and reusable template helpers in _helpers.tpl.
 
+
+# values-file
+
+To override the values in values.yml file
+
+helm install --set wordpressname="helm tutorials" my-release bitnami/wordpress
+
+it too many values need to be changed , then we can use our custom values file. however instead of = we need to use :, since its a yaml file
+
+cat custom-values.yaml
+wordpressname="helm tutorials"
+wordpressemail="seshaec"
+
+helm install --values custom-values.yaml my-release bitnami/wordpress
