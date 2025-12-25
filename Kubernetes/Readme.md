@@ -19,6 +19,7 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
 # Activities
 
 - [Install Calico CNI](#Install-Calico-CNI)
+- [Cluster-installation](#cluster-installation)
 
 # Concepts
 
@@ -32,6 +33,7 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
   - [Ingress-networking-lab1](#Ingress-lab1)
   - [Ingress-networking-lab2](#Ingress-lab2)
   - [Gateway-api](#gateway-api-lab)
+
 
 
 # Networking
@@ -1885,3 +1887,5 @@ kubectl apply -f frontend-route.yaml
 kubectl get httproute frontend-route 
 kubectl describe httproute frontend-route 
 ```
+
+# Cluster-Installation
