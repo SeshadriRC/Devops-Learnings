@@ -1,7 +1,7 @@
 
 - [Helm-Chart-Structure](#helm-chart-structure)
 
-# 📦 Helm Chart Structure
+# 📦 Helm Chart Structur
 
 A Helm chart is a **packaged Kubernetes application**.
 
@@ -214,3 +214,5 @@ mychart/
 
 > A Helm chart consists of metadata in Chart.yaml, configurable values in values.yaml, Kubernetes manifests in templates/, optional dependencies in charts/, and reusable template helpers in _helpers.tpl.
 
+
+# 📦 Helm Chart Structure
