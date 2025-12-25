@@ -1,6 +1,11 @@
-
+- [Install helm](#Install-helm)
 - [Helm-Chart-Structure](#helm-chart-structure)
 
+# Install helm
+
+- Follow this [doc](https://helm.sh/docs/intro/install#from-apt-debianubuntu)
+
+  
 # Helm Chart Structure
 
 A Helm chart is a **packaged Kubernetes application**.
