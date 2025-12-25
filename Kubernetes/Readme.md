@@ -20,6 +20,9 @@ Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
 
 - [Install Calico CNI](#Install-Calico-CNI)
 - [Cluster-installation](#cluster-installation)
+- [Install-helm](#install-helm)
+
+
 
 # Concepts
 
@@ -2200,4 +2203,25 @@ controlplane ~ ➜  k get nodes
 NAME           STATUS   ROLES           AGE   VERSION
 controlplane   Ready    control-plane   16m   v1.34.0
 node01         Ready    <none>          10m   v1.34.0
+```
+
+## Install helm
+
+1. Install the helm by using below doc
+
+https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+
+2. identify version
+
+```
+helm version
+```
+
+3. Which environment variable can be used to indicate whether or not Helm is running in Debug mode?
+
+Use the help mode of the helm command to look for this information.
+
+use below help command and check
+```
+helm -h
 ```
