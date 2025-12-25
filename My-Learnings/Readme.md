@@ -5,7 +5,7 @@ Start Date: Dec 25,2025
 - Learned about helm, helm chart , basic commands
 
 [**Kubernetes**](https://github.com/SeshadriRC/Devops-Learnings/tree/main/My-Learnings/Kubernetes)
-
+[official doc](https://kubernetes.io/docs/home/supported-doc-versions/)
 - How to set a namespace to current 
 - Learned about [application failure](https://kubernetes.io/docs/tasks/debug/debug-application/), [controlplane failure](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
 - How to set a namespace to current
