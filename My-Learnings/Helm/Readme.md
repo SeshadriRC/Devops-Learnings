@@ -1,7 +1,7 @@
 
 - [Helm-Chart-Structure](#helm-chart-structure)
 
-# 📦 Helm Chart Structur
+# Helm Chart Structure
 
 A Helm chart is a **packaged Kubernetes application**.
 
