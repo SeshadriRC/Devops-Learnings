@@ -214,5 +214,3 @@ mychart/
 
 > A Helm chart consists of metadata in Chart.yaml, configurable values in values.yaml, Kubernetes manifests in templates/, optional dependencies in charts/, and reusable template helpers in _helpers.tpl.
 
-
-# 📦 Helm Chart Structure
