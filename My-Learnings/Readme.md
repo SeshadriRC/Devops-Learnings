@@ -1,7 +1,8 @@
-Start Date: Dec 25,2025
+**Start Date: Dec 25,2025**
 
 [**Helm**](https://github.com/SeshadriRC/Devops-Learnings/tree/main/My-Learnings/Helm) 
 
+- [official doc](https://helm.sh/docs/)
 - Learned about helm, helm chart , basic commands
 
 [**Kubernetes**](https://github.com/SeshadriRC/Devops-Learnings/tree/main/My-Learnings/Kubernetes)
