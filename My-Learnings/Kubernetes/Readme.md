@@ -1,6 +1,6 @@
 - [Commands](#commands)
 - [Notes](#notes)
-
+- [Pending](#pending)
 
 # Notes
 - Check application is accessible using curl 
@@ -26,3 +26,8 @@ k logs <pod-name> -f --previous
 ```
 kubectl replace --force -f file.yaml
 ```
+
+# Pending
+
+- [application failure](https://kubernetes.io/docs/tasks/debug/debug-application/), 
+- [controlplane failure](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
