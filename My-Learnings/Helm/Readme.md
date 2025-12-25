@@ -1,6 +1,7 @@
 - [Install helm](#Install-helm)
 - [Helm-Chart-Structure](#helm-chart-structure)
 - [values-file](#values-file)
+- [Practicals](
 
 # Install helm
 
