@@ -523,6 +523,7 @@ Ensure that the nginx version running in the cluster is 1.27.x.
 To upgrade to nginx version 1.27.x using helm chart version 18.3.6, run the following command: This will install the nginx version 1.27.x.
 
 ```
+helm upgrade <release-name> <chart-name> --version 18.3.6
 helm upgrade dazzling-web bitnami/nginx --version 18.3.6
 ```
 
