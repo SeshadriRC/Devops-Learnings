@@ -10,3 +10,4 @@
 - How to set a namespace to current 
 - Learned about [application failure](https://kubernetes.io/docs/tasks/debug/debug-application/), [controlplane failure](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
 - How to set a namespace to current
+- [API gateway](https://www.youtube.com/watch?v=EG27AzlHolU)
