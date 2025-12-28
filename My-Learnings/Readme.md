@@ -5,6 +5,11 @@
 - [official doc](https://helm.sh/docs/)
 - Learned about helm, helm chart , basic commands
 
+[**Kustomize**]
+
+- Learned what is kustomize
+- Structure of kustomize
+
 [**Kubernetes**](https://github.com/SeshadriRC/Devops-Learnings/tree/main/My-Learnings/Kubernetes)
 - [official doc](https://kubernetes.io/docs/home/supported-doc-versions/)
 - How to set a namespace to current 
