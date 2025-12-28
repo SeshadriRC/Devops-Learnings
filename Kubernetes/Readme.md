@@ -1,11 +1,21 @@
 
 ## Notes
+https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Introduction/Course-Introduction
+
+Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
+
+**Pending**
+
+- kubernetes the hard way - 255 ( https://cognizant.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/learn/lecture/22498956#overview )
+
+---
 
 ### Controlplane
 
    **Kube-api-server**
       - we will access kube-api server using kubectl
-      
+
+---
 ### Yaml
 
 - Container section is a list in kubernetes yaml, so it will start with index 0
@@ -19,16 +29,6 @@ containers:
     image: kodekloud/filebeat-configured
 ```
 ---
-https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Introduction/Course-Introduction
-
-Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
-
-**Pending**
-
-- kubernetes the hard way - 255 ( https://cognizant.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/learn/lecture/22498956#overview )
-- 
-
-
 # Service
 
 **NodePort**
