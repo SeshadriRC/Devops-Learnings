@@ -76,3 +76,4 @@ sudo systemctl restart containerd
 
 **Step 3: Initialize the controlplane node**
 
+- video 16:05
