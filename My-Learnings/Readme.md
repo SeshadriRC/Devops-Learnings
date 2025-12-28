@@ -10,7 +10,8 @@
 - Learned what is kustomize
 - Structure of kustomize
 - Managing directories ( lab pending )
-- Transformers ( lab pending ) 
+- Transformers ( lab pending )
+- Patches ( lab pending )
 
 [**Kubernetes**](https://github.com/SeshadriRC/Devops-Learnings/tree/main/My-Learnings/Kubernetes)
 - [official doc](https://kubernetes.io/docs/home/supported-doc-versions/)
