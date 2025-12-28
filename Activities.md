@@ -29,6 +29,8 @@
 - [Troubleshoot and Create Ansible Playbook](https://github.com/SeshadriRC/Devops/blob/main/Ansible/Level-1/Day1%3A%20Troubleshoot%20and%20Create%20Ansible%20Playbook.md)
 
 - [Create Ansible Inventory for App Server Testing.md](https://github.com/SeshadriRC/Devops/blob/main/Ansible/Level-1/Day2%3A%20Create%20Ansible%20Inventory%20for%20App%20Server%20Testing.md)
+  
+- [Configure Default SSH User for Ansible](https://github.com/SeshadriRC/Devops/blob/main/Ansible/Level-1/Day3:%20Configure%20Default%20SSH%20User%20for%20Ansible.md)
 
 ## Docker
 
