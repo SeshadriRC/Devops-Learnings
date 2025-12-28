@@ -1,4 +1,6 @@
 
+kubernetes hard way - upto step 10 i completed
+
 ## Notes
 https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Introduction/Course-Introduction
 
