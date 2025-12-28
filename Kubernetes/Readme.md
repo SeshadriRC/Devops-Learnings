@@ -1,12 +1,12 @@
 
 ## Notes
 
-**Controlplane**
+### Controlplane
 
    **Kube-api-server**
       - we will access kube-api server using kubectl
       
-**Yaml**
+### Yaml
 
 - Container section is a list in kubernetes yaml, so it will start with index 0
 
