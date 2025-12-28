@@ -6,13 +6,14 @@
 - Container section is a list in kubernetes yaml, so it will start with index 0
 
 ```yaml
+
 containers:
   - image: kodekloud/event-simulator
     name: app
   - name: sidecar
     image: kodekloud/filebeat-configured
 ```
-
+---
 https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Introduction/Course-Introduction
 
 Git: https://github.com/SeshadriRC/certified-kubernetes-administrator-course
