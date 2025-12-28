@@ -2,6 +2,7 @@
 ## Notes
 
 **Controlplane**
+
    **Kube-api-server**
       - we will access kube-api server using kubectl
       
