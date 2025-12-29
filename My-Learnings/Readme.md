@@ -2,6 +2,14 @@
 
 **Abishek video** : Dec 29
 
+- Networking
+- Linux
+- Observability
+- Jenkins zero to hero
+- Ansible zero to hero
+- Terraform zero to hero
+
+
 [**Helm**](https://github.com/SeshadriRC/Devops-Learnings/tree/main/My-Learnings/Helm) 
 
 - [official doc](https://helm.sh/docs/)
