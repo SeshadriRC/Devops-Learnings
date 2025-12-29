@@ -12,8 +12,8 @@
 
 - For 172.168.3.0/30 
 
-32-30=2, so 2^2 = 4  -> so we can use **4** ip address here
+    32-30=2, so 2^2 = 4  -> so we can use **4** ip address here
 
 - For 10.0.0.0/8
 
-32-8=24, so 2^24 = 16,777,216 -> so we can use **16,777,216** ip address here
+   32-8=24, so 2^24 = 16,777,216 -> so we can use **16,777,216** ip address here
