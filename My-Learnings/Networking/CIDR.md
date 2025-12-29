@@ -27,3 +27,8 @@
 - Below is the example of public subnet, google dns server
 
 <img width="953" height="385" alt="image" src="https://github.com/user-attachments/assets/aabbd611-3a09-4e91-aa37-462397b5ca11" />
+
+- Below is the example of Class A, Class B and Class C ip addresses
+
+<img width="602" height="426" alt="image" src="https://github.com/user-attachments/assets/128fedca-f747-4ab2-ab36-291eb6c3ca64" />
+
