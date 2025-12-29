@@ -2,7 +2,9 @@
 
 - Whenever we are creating VPC in AWS we will be providing CIDR range there. Eg: 192.16.0.0/16, it will provide 65,536 ip addresses as per online calculator cidr
 
-- Now out of that 65,536 ip address, user needs only 32 ip addresses. so below will be the calculation
+- Now out of that 65,536 ip address, user needs only 32 ip addresses, that is called subnetting. So while creating VPC also we define CIDR and while creating subnet we will define CIDR from the VPC.
+
+- Below is the calculation
   
   Total bits is **32** for ipv4 , so we already know 2^5 is 32. so 32-5=27
 
