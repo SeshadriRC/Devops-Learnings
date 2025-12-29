@@ -4,11 +4,9 @@
 
 - Now out of that 65,536 ip address, user needs only 32 ip addresses. so below will be the calculation
   
-**CIDR Calcualtion**
+  Total bits is **32** for ipv4 , so we already know 2^5 is 32. so 32-5=27
 
-Total bits is **32** for ipv4 , so we already know 2^5 is 32. so 32-5=27
-
-**Ans:** 192.16.0.0/27
+  **Ans:** 192.16.0.0/27
 
 - Now calculate for 172.168.3.0/30 and 10.0.0.0/8
 
