@@ -17,3 +17,13 @@
 - For 10.0.0.0/8
 
    32-8=24, so 2^24 = 16,777,216 -> so we can use **16,777,216** ip address here
+
+---
+
+- For private subnet always ip will start with 192,172,10
+
+<img width="708" height="368" alt="image" src="https://github.com/user-attachments/assets/8f418950-9287-4262-b4d1-ce483443604f" />
+
+- Below is the example of public subnet, google dns server
+
+<img width="953" height="385" alt="image" src="https://github.com/user-attachments/assets/aabbd611-3a09-4e91-aa37-462397b5ca11" />
