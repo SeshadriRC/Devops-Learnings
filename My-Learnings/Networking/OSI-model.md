@@ -147,6 +147,23 @@ Just say 👍
    - whay frames ? because medium has changed, so for router -> packets and for switches -> frames
    - In a home network, the router is the Wi-Fi/modem box (default gateway), and switches are either built into the router or separate LAN devices forwarding frames between local devices.
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+A **default gateway** is the **IP address of a router that a device uses to send traffic to destinations outside its local network**.
+
+**One-line simple version:**
+
+> *The default gateway is like the “exit door” from your local network to the internet.*
+
+**Example from your setup:**
+
+* Your Wi-Fi IP: `192.168.1.5`
+* Default Gateway: `192.168.1.1` → your home router
+
+All traffic to websites like `google.com` goes **through this gateway**.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 A **MAC (Media Access Control) address** is a **unique hardware identifier assigned to a network interface card (NIC)**, used by the **Data Link layer** to deliver frames within a local network.
 
 **One-line simple version:**
@@ -174,3 +191,8 @@ If you have multiple wired devices, you might have a separate small box with mul
 In many home setups, the switch is built into the router (LAN ports act as a Layer 2 switch)
 
 
+**commands**
+
+ipconfig 
+ipconfig /all
+getmac
