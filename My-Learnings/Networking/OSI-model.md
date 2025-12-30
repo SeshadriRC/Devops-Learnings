@@ -4,6 +4,10 @@
 <img width="1028" height="490" alt="image" src="https://github.com/user-attachments/assets/606c7cfd-90e3-4f08-8a44-56e806e95249" />
 
 - suppose we are searching for google.com in browser, even before it initiates a request two things will happen. those are DNS and TCP handshake
+  <img width="1132" height="512" alt="image" src="https://github.com/user-attachments/assets/7f786e79-222d-4ff8-8042-ae9ec805d0c7" />
+
+- if both succeeds only then data request initiation starts
+  
   - DNS resolution
     - Every internet service provider maintains a DNS server where complete records of IP adress and its associated domain will be available
     - So every domain should get mapped with particular ip address. suppose you are searching for www.seshadri.com, then that domain itself not exists
@@ -16,6 +20,18 @@
        Laptop → Hathway Router (192.168.1.1) → Internet → Google
       
      ```
-           
-           
-    - TCP handshake
+             
+   - TCP handshake
+      
+        **TCP three-way handshake** is the process used to **establish a reliable connection** between a client and server. there are 2-way and 4-way handshake as well, but we are concentrating only on 3-way because that is a most used one
+        
+        **Three steps:**
+        
+        1. **SYN** – Client requests a connection
+        2. **SYN-ACK** – Server acknowledges and agrees
+        3. **ACK** – Client confirms
+        
+        **One-line interview answer:**
+        
+        > *TCP three-way handshake establishes a reliable connection using SYN, SYN-ACK, and ACK before data transfer begins.*
+
