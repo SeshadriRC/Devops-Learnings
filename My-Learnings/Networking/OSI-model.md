@@ -37,7 +37,7 @@
     > *TCP three-way handshake establishes a reliable connection using SYN, SYN-ACK, and ACK before data transfer begins.*
 
 
-**where the router comes here**
+## where the router comes here
 
 In the **TCP three-way handshake, the router does not participate in the handshake logic** — it **only forwards the packets**.
 
