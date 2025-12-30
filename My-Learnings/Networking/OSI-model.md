@@ -10,7 +10,7 @@
     - When you open google.com in Chrome, where does the [router](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/router.md) come in?
          ## How router fits in your google.com example
    
-      first it will check in local cache, then only it will go to dns sever
+    - When I access google.com, the browser first checks its local DNS cache. If not found, the DNS request is sent to a DNS server via the router, which only forwards the traffic. After resolution, the browser connects to Google using the returned IP address.
 
     ```
        Laptop → Hathway Router (192.168.1.1) → Internet → Google
