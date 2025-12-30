@@ -3,7 +3,7 @@
 
 <img width="1028" height="490" alt="image" src="https://github.com/user-attachments/assets/606c7cfd-90e3-4f08-8a44-56e806e95249" />
 
-- suppose we are searching for google.com in browser, even before it initiates a request two things will happen. those are DNS and TCP handshake
+- suppose we are searching for google.com in browser, even before it initiates a request two things will happen. those are **DNS and TCP** handshake
   <img width="1132" height="512" alt="image" src="https://github.com/user-attachments/assets/7f786e79-222d-4ff8-8042-ae9ec805d0c7" />
 
 - if both succeeds only then data request initiation starts
