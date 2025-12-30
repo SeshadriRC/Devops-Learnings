@@ -143,6 +143,34 @@ Just say 👍
 ---------------------------------------------------------------
 
 - Layer 2: Datalink layer
-   - Routers forward packets using IP addresses, and switches forward frames using MAC addresses.
+   - Routers forward packets using IP addresses, and switches forward frames using MAC addresses. 
    - whay frames ? because medium has changed, so for router -> packets and for switches -> frames
+   - In a home network, the router is the Wi-Fi/modem box (default gateway), and switches are either built into the router or separate LAN devices forwarding frames between local devices.
+
+A **MAC (Media Access Control) address** is a **unique hardware identifier assigned to a network interface card (NIC)**, used by the **Data Link layer** to deliver frames within a local network.
+
+**One-line simple version:**
+
+> *A MAC address is like a unique serial number for your device’s network card, used to send data to the correct device on a LAN.*
+
+
+
+**Router**
+
+The Wi-Fi box provided by your ISP (Hathway in your case)
+
+Usually has:
+
+Antennas
+
+Lights labeled Power, Internet, LAN, Wi-Fi
+
+Often combines router + modem + Wi-Fi AP
+
+**Switch**
+
+If you have multiple wired devices, you might have a separate small box with multiple Ethernet ports
+
+In many home setups, the switch is built into the router (LAN ports act as a Layer 2 switch)
+
 
