@@ -36,3 +36,29 @@
         
     > *TCP three-way handshake establishes a reliable connection using SYN, SYN-ACK, and ACK before data transfer begins.*
 
+
+**where the router comes here**
+
+In the **TCP three-way handshake, the router does not participate in the handshake logic** — it **only forwards the packets**.
+
+### Where the router fits (simple view)
+
+```
+Client ──SYN──> Router ──SYN──> Server
+Client <─SYN-ACK─ Router <─SYN-ACK─ Server
+Client ──ACK──> Router ──ACK──> Server
+```
+
+### Key points (interview-ready)
+
+* **Handshake happens between client and server**
+* **Router is just a transit device**
+* Router **does not create, modify, or acknowledge TCP packets**
+* Router forwards packets based on **IP routing**
+
+**One-liner:**
+
+> *During the TCP handshake, the router only forwards SYN, SYN-ACK, and ACK packets and does not take part in the handshake itself.*
+
+
+---
