@@ -1,5 +1,6 @@
 Yes — **you can see the router**, and in a home Wi-Fi setup like **Hathway**, it’s **physically present in your house**.
 
+- router work only is to forward packets between client and server
 ---
 
 ## Where the router is in your Hathway connection
