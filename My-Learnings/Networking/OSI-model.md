@@ -11,6 +11,8 @@
 
   <img width="1014" height="515" alt="image" src="https://github.com/user-attachments/assets/3f5c19ac-16ed-4aed-8ea1-5944616ad13b" />
 
+  <img width="811" height="471" alt="image" src="https://github.com/user-attachments/assets/936a1a0d-d035-43bb-a9ea-f72f9aea5a79" />
+
    
 - if both succeeds only then data request initiation starts
   
