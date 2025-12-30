@@ -6,6 +6,11 @@
 - suppose we are searching for google.com in browser, even before it initiates a request two things will happen. those are **DNS and TCP** handshake
   <img width="1132" height="512" alt="image" src="https://github.com/user-attachments/assets/7f786e79-222d-4ff8-8042-ae9ec805d0c7" />
 
+  <img width="1156" height="633" alt="image" src="https://github.com/user-attachments/assets/84f1317d-3614-4c2d-91db-6f0c64f770a8" />
+
+  <img width="1014" height="515" alt="image" src="https://github.com/user-attachments/assets/3f5c19ac-16ed-4aed-8ea1-5944616ad13b" />
+
+   
 - if both succeeds only then data request initiation starts
   
   - DNS resolution
