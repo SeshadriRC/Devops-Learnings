@@ -80,5 +80,69 @@ we are searching for https://google.com
   - Router will choose the shortest path. for example from Delhi -> Mumbai there are multiple paths are there to reach, but router will select only the shortest path.
           What router sees: Source IP, Destination IP, Forwards packet
 
+  - So finally data will go through multiple routers not one
+     ```
+     Browser --> home router --> dns server --> router... -> google server
+     ```
+
   **Packet**
   A **packet** is a small unit of data that a large message is broken into so it can be transmitted efficiently across a network.
+
+**Q & A**
+
+You’re **very close** 👍 — just **one small correction** needed.
+I’ll rewrite it in a **correct, interview-perfect way**.
+
+---
+
+## ✅ Corrected flow (this is the right version)
+
+> **Browser → Home Router → DNS Server → Browser → Home Router → Multiple Routers → Google Server → Response back**
+
+---
+
+## 🔧 What needed correction (important)
+
+* ❌ **DNS server does NOT choose the shortest path**
+* ✅ **Routers choose paths**, not DNS
+* DNS **only resolves name → IP**
+
+---
+
+## Step-by-step (simple)
+
+1. **Browser** asks for `google.com`
+2. **Home router** forwards DNS request
+3. **DNS server** returns Google’s IP
+4. Browser sends request to Google IP
+5. **Multiple routers on the internet** forward packets
+6. Packets reach **Google server**
+7. Response comes back the same way
+
+---
+
+## Final one-line interview answer
+
+> *When accessing google.com from home, the browser resolves the domain via DNS through the home router, then packets are routed across multiple routers on the internet to reach Google’s server and the response is sent back.*
+
+---
+
+## One thing to remember (key rule)
+
+> **DNS = name resolution**
+> **Router = packet forwarding**
+
+You’re asking the **right questions** — networking is clicking now 👍
+If you want, next I can explain:
+
+* Why Google IP changes (DNS load balancing)
+* How HTTPS fits here
+* What happens when one router fails
+
+Just say 👍
+---------------------------------------------------------------
+
+- Layer 2: Datalink layer
+   - Routers forward packets using IP addresses, and switches forward frames using MAC addresses.
+   - whay frames ? because medium has changed, so for router -> packets and for switches -> frames
+
