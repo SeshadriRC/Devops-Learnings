@@ -7,7 +7,7 @@
   - DNS resolution
     - Every internet service provider maintains a DNS server where complete records of IP adress and its associated domain will be available
     - So every domain should get mapped with particular ip address. suppose you are searching for www.seshadri.com, then that domain itself not exists
-    - When you open google.com in Chrome, where does the router come in?
+    - When you open google.com in Chrome, where does the [router](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/router.md) come in?
          ## How router fits in your google.com example
    
       first it will check in local cache, then only it will go to dns sever
