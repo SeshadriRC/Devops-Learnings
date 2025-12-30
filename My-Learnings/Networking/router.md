@@ -81,10 +81,6 @@ Every packet **must pass through this router**.
 
 ---
 
-If you want next:
 
-* Difference between **modem vs router**
 * What is **default gateway**
-* Why router uses **NAT**
-
-Just tell me 👍
+A **default gateway** is the **router’s IP address** that a device uses to **send traffic to destinations outside its local network** when no specific route exists.
