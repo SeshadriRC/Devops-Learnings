@@ -47,9 +47,7 @@
  - [Update Git Repository with Sample HTML File](https://github.com/SeshadriRC/Devops/blob/main/Git/Level-1/Day4%3A%20Update%20Git%20Repository%20with%20Sample%20HTML%20File.md)
 
 ## Jenkins
-- [Jenkins-installation](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day-1%3A%20Jenkins-Server-Setup.md)
-- [Install-Jenkins-Plugins](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day2%3A%20Install%20Jenkins%20Plugins.md)
-- [Configure Jenkins User access](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day3%3A%20Configure%20Jenkins%20User%20Access.md)
+- [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Jenkins/Practicals/Level-1)
 
 
 ## Kubernetes
