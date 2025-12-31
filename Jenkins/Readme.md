@@ -7,7 +7,7 @@
 # My learnings
 - [Plugins](#plugins)
 - [User Creation in Jenkins](#User-creation)
-    [Authorization](#authorization)
+    - [Authorization](#authorization)
 
 
 # Plugins
