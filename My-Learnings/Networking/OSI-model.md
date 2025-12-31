@@ -1,3 +1,13 @@
+**Pre-requisites**
+
+- [Packet]
+- [Routers](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/Routers.md)
+- [Defaut gateway](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/Default-gateway.md)
+- [MAC address](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/MAC-address.md)
+- [Switch-and-routers](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/Switches-and-routers.md)
+
+
+
 - It explains the journey of data across the interner ( from client to server ), explaines the entire thing in 7 layers
 - L1 to L7 (or) L7 to L1
 - New model is the TCP-IP model, however understanding OSI model is enough. In TCP-IP model , Layer 7,6,5 is combined
@@ -93,8 +103,7 @@ we are searching for https://google.com
      Browser --> home router --> dns server --> router... -> google server
      ```
 
-  **Packet**
-  A **packet** is a small unit of data that a large message is broken into so it can be transmitted efficiently across a network.
+ 
 
 **Q & A**
 
@@ -150,120 +159,16 @@ If you want, next I can explain:
 Just say 👍
 ---------------------------------------------------------------
 
-- Layer 2: Datalink layer
+- **Layer 2: Datalink layer**
    - Routers forward packets using IP addresses, and switches forward frames using MAC addresses. 
    - whay frames ? because medium has changed, so for router -> packets and for switches -> frames
    - In a home network, the router is the Wi-Fi/modem box (default gateway), and switches are either built into the router or separate LAN devices forwarding frames between local devices.
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-A **default gateway** is the **IP address of a router that a device uses to send traffic to destinations outside its local network**.
-
-**One-line simple version:**
-
-> *The default gateway is like the “exit door” from your local network to the internet.*
-
-**Example from your setup:**
-
-* Your Wi-Fi IP: `192.168.1.5`
-* Default Gateway: `192.168.1.1` → your home router
-
-All traffic to websites like `google.com` goes **through this gateway**.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-A **MAC (Media Access Control) address** is a **unique hardware identifier assigned to a network interface card (NIC)**, used by the **Data Link layer** to deliver frames within a local network.
-
-**One-line simple version:**
-
-> *A MAC address is like a unique serial number for your device’s network card, used to send data to the correct device on a LAN.*
 
 
 
-**Router**
 
-The Wi-Fi box provided by your ISP (Hathway in your case)
 
-Usually has:
-
-Antennas
-
-Lights labeled Power, Internet, LAN, Wi-Fi
-
-Often combines router + modem + Wi-Fi AP
-
-**Switch**
-
-If you have multiple wired devices, you might have a separate small box with multiple Ethernet ports
-
-In many home setups, the switch is built into the router (LAN ports act as a Layer 2 switch)
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++
-Perfect — from your `ipconfig` output, we can **identify the router, switches, and MAC addresses**. Let me explain clearly.
-
----
-
-## 1️⃣ **Router (Default Gateway)**
-
-* Look for **Default Gateway** in the active interface.
-* Your active Wi-Fi interface:
-
-```
-Wireless LAN adapter Wi-Fi:
-    IPv4 Address. . . . . . . . . . . : 192.168.1.5
-    Default Gateway . . . . . . . . . : 192.168.1.1
-```
-
-* **192.168.1.1** → Your **home router (Hathway Wi-Fi box)**
-* This router connects your LAN to the internet and forwards packets.
-
----
-
-## 2️⃣ **Switches**
-
-* In most **home networks**, switches are **built into the router**.
-* If you have multiple Ethernet ports on your router, those ports act as **LAN switches**.
-* There may not be a visible standalone switch unless you added one.
-
-**Key point:**
-
-> Switches are usually **transparent**, you don’t see them in `ipconfig`. They just forward Ethernet frames based on MAC addresses.
-
----
-
-## 3️⃣ **MAC Address (Your device’s network interface)**
-
-* To see the MAC address in Windows:
-
-```cmd
-getmac
-```
-
-or in `ipconfig /all` (shows MAC as **Physical Address**):
-
-```
-Wireless LAN adapter Wi-Fi:
-   Physical Address. . . . . . . . . : 1C-1B-0D-5A-2F-3C
-```
-
-* This is **your laptop’s NIC unique identifier**.
-* Used by switches to forward frames on your LAN.
-
----
-
-### ✅ Quick summary from your setup
-
-| Component     | Where to see                          | Example              |
-| ------------- | ------------------------------------- | -------------------- |
-| Router (home) | Default Gateway                       | 192.168.1.1          |
-| Switch        | Inside router LAN ports (transparent) | Not visible directly |
-| MAC Address   | `getmac` or `ipconfig /all`           | 1C-1B-0D-5A-2F-3C    |
-
----
-
-If you want, I can **draw a home network diagram** showing **your laptop, router, switch, and MAC/IP addresses** — very helpful for interviews.
-
-Do you want me to do that?
 
 **Layer 2: Data Link Layer**  - This layer handles the transfer of data between nodes on the same network segment. It converts packets into frames and adds MAC address information, which is used by switches to identify devices within the local network.
 
@@ -296,35 +201,41 @@ getmac
 ---
 **Youtube summarize**
 
-Layer 7: Application Layer (51:57-52:07)
+**Layer 7: Application Layer** 
 
-This is the initial stage where your browser initiates an HTTP or HTTPS request to the server (51:13-51:28).
-You can pass headers and provide information for authentication in this layer (52:10-52:18).
-Layer 6: Presentation Layer (53:21-53:35)
+This is the initial stage where your browser initiates an HTTP or HTTPS request to the server.
+You can pass headers and provide information for authentication in this layer.
 
-After the HTTP request is initiated, the next step is data encryption, also referred to as data formatting (53:19-53:24).
-This layer ensures that even if data is hacked, it's not understood because it's encrypted (53:05-53:09).
-Layer 5: Session Layer (53:54-54:02)
+**Layer 6: Presentation Layer**
 
-Following data encryption, your browser creates a session (53:54-54:02). This means it establishes a connection, ensures data is sent successfully, and maintains the connection open until all data is transferred, then closes it (54:10-54:30).
-It is responsible for creating, maintaining, and closing sessions (54:07-54:10).
-Layer 4: Transport Layer (54:33-54:39)
+After the HTTP request is initiated, the next step is data encryption, also referred to as data formatting.
+This layer ensures that even if data is hacked, it's not understood because it's encrypted.
 
-This layer is responsible for data segmentation, breaking down data into smaller chunks called segments (54:47-55:00).
-It handles error detection and recovery (55:18-55:20), and manages the flow of data to prevent overwhelming the receiver (55:23-55:28).
-The Transport Layer also includes TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) (55:30-55:41). TCP ensures data is delivered reliably and in order, while UDP is connectionless and faster, suitable for streaming (55:42-56:06).
-Layer 3: Network Layer (56:11-56:18)
+**Layer 5: Session Layer**
 
-This layer is where IP addresses are added to the segments, transforming them into packets (56:20-56:28).
-It determines the best path for data transfer across different networks using routers (56:29-56:39).
-Layer 2: Data Link Layer (56:42-56:52)
+Following data encryption, your browser creates a session. This means it establishes a connection, ensures data is sent successfully, and maintains the connection open until all data is transferred, then closes it.
+It is responsible for creating, maintaining, and closing sessions.
 
-At this layer, MAC (Media Access Control) addresses are added to the packets, turning them into frames (56:55-57:04).
-It ensures reliable data transfer between directly connected devices (57:05-57:12) and handles error detection within the local network (57:12-57:16).
-Layer 1: Physical Layer (57:18-57:28)
+**Layer 4: Transport Layer**
 
-This is the lowest layer where frames are converted into raw bits (binary data) and transmitted over the physical medium (57:30-57:42).
-It deals with the actual physical connection, such as cables, Wi-Fi, or fiber optics (57:43-57:51).
+This layer is responsible for data segmentation, breaking down data into smaller chunks called segments.
+It handles error detection and recovery, and manages the flow of data to prevent overwhelming the receiver.
+The Transport Layer also includes TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) (55:30-55:41). TCP ensures data is delivered reliably and in order, while UDP is connectionless and faster, suitable for streaming.
+
+**Layer 3: Network Layer**
+
+This layer is where IP addresses are added to the segments, transforming them into packets.
+It determines the best path for data transfer across different networks using routers.
+
+**Layer 2: Data Link Layer**
+
+At this layer, MAC (Media Access Control) addresses are added to the packets, turning them into frames.
+It ensures reliable data transfer between directly connected devices and handles error detection within the local network.
+
+**Layer 1: Physical Layer**
+
+This is the lowest layer where frames are converted into raw bits (binary data) and transmitted over the physical medium.
+It deals with the actual physical connection, such as cables, Wi-Fi, or fiber optics.
 
 ---
 
