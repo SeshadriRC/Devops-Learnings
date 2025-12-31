@@ -13,6 +13,7 @@
 # Plugins
 
 - Project based matrix authorization strategy -> useful for user authorization [practice](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day3%3A%20Configure%20Jenkins%20User%20Access.md)
+- Folders plugin -> used to create folder in jenkins [practice](https://github.com/SeshadriRC/Devops/blob/main/Jenkins/Practicals/Level-1/Day4:%20Organize%20Jenkins%20Jobs%20with%20Folders.md)
 
 # User Creation
 
