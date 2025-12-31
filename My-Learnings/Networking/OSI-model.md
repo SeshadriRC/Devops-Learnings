@@ -292,3 +292,39 @@ A **Local Area Network (LAN)** is a **network that connects devices within a lim
 ipconfig 
 ipconfig /all
 getmac
+
+---
+**Youtube summarize**
+
+Layer 7: Application Layer (51:57-52:07)
+
+This is the initial stage where your browser initiates an HTTP or HTTPS request to the server (51:13-51:28).
+You can pass headers and provide information for authentication in this layer (52:10-52:18).
+Layer 6: Presentation Layer (53:21-53:35)
+
+After the HTTP request is initiated, the next step is data encryption, also referred to as data formatting (53:19-53:24).
+This layer ensures that even if data is hacked, it's not understood because it's encrypted (53:05-53:09).
+Layer 5: Session Layer (53:54-54:02)
+
+Following data encryption, your browser creates a session (53:54-54:02). This means it establishes a connection, ensures data is sent successfully, and maintains the connection open until all data is transferred, then closes it (54:10-54:30).
+It is responsible for creating, maintaining, and closing sessions (54:07-54:10).
+Layer 4: Transport Layer (54:33-54:39)
+
+This layer is responsible for data segmentation, breaking down data into smaller chunks called segments (54:47-55:00).
+It handles error detection and recovery (55:18-55:20), and manages the flow of data to prevent overwhelming the receiver (55:23-55:28).
+The Transport Layer also includes TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) (55:30-55:41). TCP ensures data is delivered reliably and in order, while UDP is connectionless and faster, suitable for streaming (55:42-56:06).
+Layer 3: Network Layer (56:11-56:18)
+
+This layer is where IP addresses are added to the segments, transforming them into packets (56:20-56:28).
+It determines the best path for data transfer across different networks using routers (56:29-56:39).
+Layer 2: Data Link Layer (56:42-56:52)
+
+At this layer, MAC (Media Access Control) addresses are added to the packets, turning them into frames (56:55-57:04).
+It ensures reliable data transfer between directly connected devices (57:05-57:12) and handles error detection within the local network (57:12-57:16).
+Layer 1: Physical Layer (57:18-57:28)
+
+This is the lowest layer where frames are converted into raw bits (binary data) and transmitted over the physical medium (57:30-57:42).
+It deals with the actual physical connection, such as cables, Wi-Fi, or fiber optics (57:43-57:51).
+
+---
+
