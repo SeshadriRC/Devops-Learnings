@@ -8,4 +8,4 @@
 
 **Chapter 2**
 
-- [OSI Model]
+- [OSI Model](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/OSI-model.md)
