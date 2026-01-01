@@ -1,7 +1,7 @@
 
 **Pre-requisites**
 
-- VPC
+- [VPC](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/VPC.md)
 - [Subnets-AWS](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/Subnets-AWS.md)
 - Internet Gateway
 - Load Balancer
