@@ -93,6 +93,12 @@ cat /etc/group -> Check the group information
 
 ```
 
+- User creation without home directory
+
+```
+useradd -M john
+```
+
 - Check the group details
 
 ```
