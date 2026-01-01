@@ -55,7 +55,7 @@
 - [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Kubernetes)
 
 ## Linux
-- [Create Linux user and assign UID and designate home directory](https://github.com/SeshadriRC/Devops/tree/main/Linux/Level-1)
+- [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Linux/Level-1)
   
 ## Terraform
 
