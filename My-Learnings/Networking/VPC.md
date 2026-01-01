@@ -1,3 +1,7 @@
+
+<img width="960" height="662" alt="image" src="https://github.com/user-attachments/assets/3da37626-66f7-44f8-89de-f65eecbf4424" />
+
+
 ### 🌐 What is a VPC in AWS?
 
 A **VPC (Virtual Private Cloud)** is a **logically isolated virtual network** in AWS where you launch and manage AWS resources (like EC2, RDS, Load Balancers).
