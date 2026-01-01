@@ -3,7 +3,7 @@
 
 - [VPC](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/VPC.md)
 - [Subnets-AWS](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/Subnets-AWS.md)
-- Internet Gateway
+- [Internet Gateway](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/Internet-gateway.md)
 - Load Balancer
 - Route-table
 
