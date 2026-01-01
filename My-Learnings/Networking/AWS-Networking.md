@@ -25,7 +25,7 @@
 
 - First we will be creating a **VPC** with CIDR range 172.16.0.0/16, so totally 65536 ip addresses will be allocated
 - So inside VPC we will divide the ip adrress for sub projects, that is call **subnets**
-- 
+- First user will connect to public subnet using internet gateway
 
 <img width="1181" height="596" alt="image" src="https://github.com/user-attachments/assets/12f6c18a-7ded-4f63-90e1-462d0844f6e4" />
 
