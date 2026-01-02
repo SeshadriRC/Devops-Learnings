@@ -1,6 +1,22 @@
 
+- [SSH](#ssh)
 - [VPC](#vpc)
 
+
+# SSH
+
+- How it works (simple)
+
+   - Public key → stored on the EC2 instance
+   - Private key (mykey.pem) → stays with you
+   - SSH verifies they match
+
+```
+ssh -i <private-key> ubuntu@<public-ip>
+
+Eg: ssh -i /downloads/mykey.pem ubuntu@<public-ip>
+
+```
 
 # VPC
 
