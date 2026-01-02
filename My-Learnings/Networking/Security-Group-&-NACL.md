@@ -106,3 +106,20 @@ python3 -m http.server 8000
 
 <img width="1371" height="264" alt="image" src="https://github.com/user-attachments/assets/d2f1ffac-c75a-4438-9bec-556d9131ffb9" />
 
+- Now your organization don't need to allow port **8000**, so block from the NACL level. Now your webpage will not load
+
+<img width="1919" height="761" alt="image" src="https://github.com/user-attachments/assets/a8db5b7c-3bc1-4bcb-8595-ecbe99ef7523" />
+<img width="1919" height="953" alt="image" src="https://github.com/user-attachments/assets/f6d904e6-8a30-4dbf-8c2e-be54a40a080f" />
+
+- Now see even if you deny the port, but as per least number process first it will check 100, it satisfies condition , webpage will get loaded successfully.
+
+<img width="1919" height="978" alt="image" src="https://github.com/user-attachments/assets/fef752ca-3a90-425d-93a4-62ea18f1b58d" />
+
+- Now webpage will not load, since least number takes precedence
+
+<img width="1919" height="952" alt="image" src="https://github.com/user-attachments/assets/e72331b6-b66c-46e0-8dfe-e13d22cb483f" />
+
+- We can mention separate IP as well if we need to block
+
+<img width="1919" height="608" alt="image" src="https://github.com/user-attachments/assets/c2db57a4-1e2c-4830-a3c4-372eea23a998" />
+
