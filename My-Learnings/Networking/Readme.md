@@ -16,4 +16,4 @@
 
 **Chapter 4**
 
-- [AWS Security groups & NACL]
+- [AWS Security groups & NACL]   -> Practicals included
