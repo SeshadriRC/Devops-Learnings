@@ -6,7 +6,7 @@
 - [Sns-topics](#Sns-topics)
 - [Subnets](#subnets)
 - [sts](#sts)
-- [VPC](#vpc)
+
 
 # Configure
 
@@ -75,15 +75,6 @@ aws ec2 describe-subnets \
 aws sts get-caller-identity
 ```
 
-# VPC
-
-```
-aws ec2 describe-vpcs --query "Vpcs[].VpcId" --output table
-
-aws ec2 describe-vpcs \
-  --query "Vpcs[].{VpcId:VpcId, Name:Tags[?Key=='Name'].Value | [0]}" \
-  --output table
-```
 
 
 
