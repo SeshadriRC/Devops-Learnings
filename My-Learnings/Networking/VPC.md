@@ -2,6 +2,10 @@
 <img width="960" height="662" alt="image" src="https://github.com/user-attachments/assets/3da37626-66f7-44f8-89de-f65eecbf4424" />
 
 
+- Whenver we are creating VPC, we will be creating CIDR range which is used to define number of IP addresses that the VPC needs. nothing but a VPC size
+
+    Eg: 10.1.0.0/16 will have 65,536 ip addresses
+
 ### 🌐 What is a VPC in AWS?
 
 A **VPC (Virtual Private Cloud)** is a **logically isolated virtual network** in AWS where you launch and manage AWS resources (like EC2, RDS, Load Balancers).
