@@ -16,4 +16,4 @@
 
 **Chapter 4**
 
-- [AWS Security groups & NACL]   -> **Practicals included**
+- [AWS Security groups & NACL](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/Security-Group-and-NACL.md)   -> **Practicals included**
