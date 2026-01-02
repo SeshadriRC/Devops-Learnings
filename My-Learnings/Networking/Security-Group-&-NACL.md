@@ -31,4 +31,12 @@
 
 **Practicals**
 
+- In this practical, we created VPC
+
 <img width="1068" height="456" alt="image" src="https://github.com/user-attachments/assets/025d8dd0-8036-4b4c-b718-1e57af04ec1f" />
+
+<img width="1879" height="896" alt="image" src="https://github.com/user-attachments/assets/317404c3-450c-4bbe-87f9-32c89691af50" />
+<img width="1872" height="577" alt="image" src="https://github.com/user-attachments/assets/45c60971-e41e-4b03-9220-55696533c078" />
+
+
+VPC -> Create VPC
