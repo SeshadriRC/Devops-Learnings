@@ -59,8 +59,7 @@
   
 ## Terraform
 
-- [Key-Pair-Creation](https://github.com/SeshadriRC/Devops/blob/main/Terraform/Day1%3A%20Create%20Key%20Pair%20Using%20Terraform.md)
-- [Security-group-Creation](https://github.com/SeshadriRC/Devops/blob/main/Terraform/Level-1/Day2%3A%20Create%20Security%20Group%20using%20terraform.md)
+- [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Terraform/Level-1)
 
 # Office
 **Openshift**
