@@ -54,7 +54,10 @@
 **EC2**
 
 - Select the custom vpc which we created
-- By default, it will use private subnet as per the industry practice, but for this practicals we are selecting public subnet since we are not any LB here
+- By default, it will use private subnet as per the industry practice, but for this practicals we are selecting public subnet since we are not using any LB here. so that traffic flow will be like below
+  ```
+  user --> IG --> NACL allowed --> public subnet -->  --> route table --> Securitygroup --> Ec2 instance
+  ```
 - Auto assin public -> yes
 - allow aws to create default SG, then we will tweak it
 
@@ -85,7 +88,18 @@ python3 -m http.server 8000
 <img width="1919" height="977" alt="image" src="https://github.com/user-attachments/assets/70a53a0b-ea88-4a8d-86cd-5ff304e5ae83" />
 
 - Below is the NACL configuration of our VPC
+- So it is **allowing** all the traffic , rule no 100. if in case this rule didn't match then it will go to next rule that is **deny**
 
 <img width="1919" height="1009" alt="image" src="https://github.com/user-attachments/assets/ed02f795-5f3f-464e-98c4-81a29f935d57" />
+
+- Least number will be verified. for eg if we configured rule 200, then rule 100 will be verified first then it will go to rule 200. Then finally only it will go to *
+
+- Now in security group, allow port 8000. here we are selecting custom tcp, then allowing port 8000 anywhere in the world
+
+<img width="1919" height="862" alt="image" src="https://github.com/user-attachments/assets/5e4d972e-05f2-43d5-869a-b19bc94de182" />
+
+- Now we can see the output
+
+<img width="1605" height="651" alt="image" src="https://github.com/user-attachments/assets/6a03aca1-1e18-4cd2-9371-19a5d7ce2c98" />
 
 
