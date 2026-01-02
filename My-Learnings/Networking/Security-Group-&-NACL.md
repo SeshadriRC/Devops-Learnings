@@ -102,4 +102,7 @@ python3 -m http.server 8000
 
 <img width="1605" height="651" alt="image" src="https://github.com/user-attachments/assets/6a03aca1-1e18-4cd2-9371-19a5d7ce2c98" />
 
+- Verify
+
+<img width="1371" height="264" alt="image" src="https://github.com/user-attachments/assets/d2f1ffac-c75a-4438-9bec-556d9131ffb9" />
 
