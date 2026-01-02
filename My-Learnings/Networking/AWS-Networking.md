@@ -7,6 +7,7 @@
 - [Load Balancer](https://github.com/SeshadriRC/Devops-Learnings/tree/main/My-Learnings/Networking)
 - [Security-group]
 - Route-table
+- NAT gateway
 
 
 
