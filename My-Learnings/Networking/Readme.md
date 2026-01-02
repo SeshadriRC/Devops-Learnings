@@ -20,4 +20,4 @@
 
 **Chapter 5**
 
-- [AWS VPC handson]
+- [AWS VPC handson](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/AWS-VPC-handson.md)  -> **Practicals included**
