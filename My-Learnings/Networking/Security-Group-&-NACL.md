@@ -79,8 +79,13 @@ python3 -m http.server 8000
 <img width="1457" height="214" alt="image" src="https://github.com/user-attachments/assets/aa16216d-a099-4eff-9cd5-6768c7ebab60" />
 <img width="1132" height="231" alt="image" src="https://github.com/user-attachments/assets/497fc938-1d4c-4204-b978-4d1e06e74297" />
 
+- Below is the default security group attached, see the rules it allowing only port 22, so we can able to do ssh
+
+<img width="1919" height="658" alt="image" src="https://github.com/user-attachments/assets/076d526a-44cc-41fb-81e7-b517f2ac9b40" />
+<img width="1919" height="977" alt="image" src="https://github.com/user-attachments/assets/70a53a0b-ea88-4a8d-86cd-5ff304e5ae83" />
+
+- Below is the NACL configuration of our VPC
+
+<img width="1919" height="1009" alt="image" src="https://github.com/user-attachments/assets/ed02f795-5f3f-464e-98c4-81a29f935d57" />
 
 
-
-
-VPC -> Create VPC
