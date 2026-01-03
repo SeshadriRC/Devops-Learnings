@@ -14,9 +14,7 @@
 - [Deploy 3-tier application in EKS cluster](https://github.com/SeshadriRC/three-tier-architecture-demo-project)
 
 ## AWS
-- [Create key-pair](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day1:%20Create%20Key%20Pair.md)
-- [Create security group](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day2%3A%20Create%20Security%20Group.md)
-- [Create subnets](https://github.com/SeshadriRC/Devops/blob/main/AWS/50-days/Day3:%20Create%20Subnet.md)
+- [50-days](https://github.com/SeshadriRC/Devops/tree/main/AWS/50-days)
 
 ## Azure
 
