@@ -94,7 +94,7 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 
 - EC2 instances got created
 
-![Uploading image.png…]()
+
 
 
 
