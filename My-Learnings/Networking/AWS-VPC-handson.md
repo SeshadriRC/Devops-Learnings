@@ -12,6 +12,9 @@
 
 - Create VPC and more
 - Create Autoscaling group
+- Create Bastion host and access other servers
+- Install python application on one ec2 instance
+- Create load balancer and add two ec2 instance as target group
 
 
 - VPC creation
@@ -94,10 +97,69 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 
 - EC2 instances got created
 
+- one instance running in az-a and other is az-b
+
+<img width="1835" height="748" alt="image" src="https://github.com/user-attachments/assets/add6619e-55ad-4584-bfbe-9c67110743cf" />
+
+- we can see instance dont have public ip address, because we have created this instance in private subnets so to access this we need to create bastion host (it acts as a mediator between private subnet and user or public subnet)
+
+<img width="1801" height="575" alt="image" src="https://github.com/user-attachments/assets/979bf629-813f-4411-b17b-5abbb9b25cd6" /> 
 
 
+---
+
+**Create bastion host**
+
+<img width="1855" height="615" alt="image" src="https://github.com/user-attachments/assets/3e4e08b0-cc98-48cc-acbb-f934b41cfe9c" />
+<img width="1084" height="284" alt="image" src="https://github.com/user-attachments/assets/e01d2c6a-f5ca-4d09-acdd-7df972ce9200" />
+<img width="1126" height="763" alt="image" src="https://github.com/user-attachments/assets/d27dc0c4-1dfd-4534-b1d0-666057db3fd7" />
+<img width="1794" height="400" alt="image" src="https://github.com/user-attachments/assets/6185813d-b15f-4801-9f14-851e0cebd711" />
+<img width="1033" height="320" alt="image" src="https://github.com/user-attachments/assets/ee82b912-a19e-4bcf-ab6b-071cf1f92c41" />
+
+- network settings
+
+<img width="1157" height="642" alt="image" src="https://github.com/user-attachments/assets/8bf3ba00-d35d-485e-88ce-6f57b743f1e6" />
+<img width="951" height="131" alt="image" src="https://github.com/user-attachments/assets/f1270853-044d-4827-ade1-2b77c985fb8d" />
+<img width="1054" height="647" alt="image" src="https://github.com/user-attachments/assets/71635327-3a23-4950-a4d3-38ab1d6e120b" />
+
+- launch the instance
+
+<img width="1839" height="542" alt="image" src="https://github.com/user-attachments/assets/bfa5d1e9-e1f5-4ab2-97ab-6e5b4a96e895" />
+
+- bastion host is created
+
+<img width="1855" height="423" alt="image" src="https://github.com/user-attachments/assets/5391a93c-5aab-4ed2-8004-3f83e22a941f" />
+
+- copy pem file from local computer to bastion host
+
+<img width="1689" height="352" alt="image" src="https://github.com/user-attachments/assets/0efbe711-bb30-4dc9-af23-eafbc22ed0ca" />
+
+- Now you logged into bastion host
+
+<img width="1736" height="885" alt="image" src="https://github.com/user-attachments/assets/30f0a875-ad56-475e-8cc3-ea88498b327a" />
+
+- Now take the private ip of one of ec2 instance and try to login from bastion host
+
+<img width="1699" height="178" alt="image" src="https://github.com/user-attachments/assets/6a9494b0-52c7-4c7c-9e65-0f7373fa3d7b" />
+
+---
+
+**Install Python application**
+
+- Take html page from w3 schools
+
+<img width="1399" height="296" alt="image" src="https://github.com/user-attachments/assets/8929f640-9db2-4be0-8eb2-c43699df2134" />
+
+- Run the application
+
+<img width="1447" height="194" alt="image" src="https://github.com/user-attachments/assets/72be6f48-6daa-4371-af77-c130e95e75e1" />
 
 
+---
+
+**Create LB**
+
+<img width="1847" height="612" alt="image" src="https://github.com/user-attachments/assets/a75a8c27-f62d-4d9f-948f-43ae491e6f70" />
 
 
 
