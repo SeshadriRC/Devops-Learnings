@@ -176,7 +176,7 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 - select EC2 instance
 <img width="1840" height="878" alt="image" src="https://github.com/user-attachments/assets/e6a56497-5895-4379-909a-6fef7e272553" />
 
-- we are using HTTP protocol, and application is listening on port 8000. so configure here accordingly
+- we are using HTTP protocol, and application is listening on port 8000. so configure here accordingly, actually other below images it will show port 80 , as abhishek initially did wrong then changed the configuration
 <img width="1838" height="817" alt="image" src="https://github.com/user-attachments/assets/e7ed5305-a1e7-410c-aac0-999f51aecb16" />
 
 
@@ -186,6 +186,32 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 - register targets and include as pending below
 <img width="1850" height="535" alt="image" src="https://github.com/user-attachments/assets/1b6a7822-95d8-4dc3-9d48-4730d2009dcd" />
 <img width="1820" height="873" alt="image" src="https://github.com/user-attachments/assets/82c722ce-824b-4dfc-ad1c-cc2072860d48" />
+
+
+- Now configure the target groups, here we configured port 80 wrongly for purpose of practicals
+<img width="1392" height="657" alt="image" src="https://github.com/user-attachments/assets/a04fa71d-4761-4603-a532-39a4670f4864" />
+
+<img width="1695" height="851" alt="image" src="https://github.com/user-attachments/assets/b7526d34-0a70-43aa-95df-0080d9009e5a" />
+
+- Now create LB
+<img width="1864" height="641" alt="image" src="https://github.com/user-attachments/assets/adddf8c9-9dc1-47f9-a012-6c0947506bde" />
+
+- if you go inside LB, then we can see error as port is not reachable because we configured listener wrongly
+
+<img width="1807" height="895" alt="image" src="https://github.com/user-attachments/assets/a180cafd-bb6f-4eaf-8eae-120cfc5a2a96" />
+
+
+- so to fix this issue we need to configure SG accordingly
+
+<img width="1780" height="907" alt="image" src="https://github.com/user-attachments/assets/48ae68e1-2be5-4cbf-a88a-7c2d24754c79" />
+
+- Now copy the DNS of LB
+
+<img width="1808" height="500" alt="image" src="https://github.com/user-attachments/assets/98ff813a-832a-44fb-acb1-c10f529a4354" />
+
+- Now we are able to access this application running on port 8000
+
+<img width="1382" height="177" alt="image" src="https://github.com/user-attachments/assets/0b20c014-c98e-427e-88b8-aa7648b55adc" />
 
 
 
