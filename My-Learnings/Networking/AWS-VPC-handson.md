@@ -188,7 +188,7 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 <img width="1820" height="873" alt="image" src="https://github.com/user-attachments/assets/82c722ce-824b-4dfc-ad1c-cc2072860d48" />
 
 
-- Now configure the target groups, here we configured port 80 wrongly for purpose of practicals
+- Now configure the Listener of LB, here we configured port 80 wrongly for purpose of practicals. so LB will be listening port 80 but we haven't allowed in SG, only 8000 we allowed. if we want we can change LB listener to 8000 as well. we kept 80 for troubleshooting purpose
 <img width="1392" height="657" alt="image" src="https://github.com/user-attachments/assets/a04fa71d-4761-4603-a532-39a4670f4864" />
 
 <img width="1695" height="851" alt="image" src="https://github.com/user-attachments/assets/b7526d34-0a70-43aa-95df-0080d9009e5a" />
@@ -199,6 +199,8 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 - if you go inside LB, then we can see error as port is not reachable because we configured listener wrongly
 
 <img width="1807" height="895" alt="image" src="https://github.com/user-attachments/assets/a180cafd-bb6f-4eaf-8eae-120cfc5a2a96" />
+<img width="1518" height="404" alt="image" src="https://github.com/user-attachments/assets/2cacdd1e-e479-43aa-882a-e747607bcdb8" />
+
 
 
 - so to fix this issue we need to configure SG accordingly
@@ -213,6 +215,9 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 
 <img width="1382" height="177" alt="image" src="https://github.com/user-attachments/assets/0b20c014-c98e-427e-88b8-aa7648b55adc" />
 
+- You can able to see the application even if you refresh, it won't LB to another server, bcz target group uses health checks. so it will route traffic  only to the server which running app. abishek will be showing in separate video by disabling healt checks. still not released
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e232fadb-8270-4f28-838e-ab6ed58ea6b2" />
 
 
 
