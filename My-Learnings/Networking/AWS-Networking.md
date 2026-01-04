@@ -1,4 +1,6 @@
 
+Refer this [practicals](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/AWS-VPC-handson.md) to understand clearly
+
 **Pre-requisites**
 
 - [VPC](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Networking/VPC.md)
