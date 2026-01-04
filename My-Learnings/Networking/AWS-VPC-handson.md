@@ -157,13 +157,13 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 
 ---
 
-**Create LB**
+**Create App LB**
 
 <img width="1847" height="612" alt="image" src="https://github.com/user-attachments/assets/a75a8c27-f62d-4d9f-948f-43ae491e6f70" />
 
 
 
-
+s
 
 
 
