@@ -265,28 +265,28 @@ MAC addresses are added to the packets, forming frames. These frames are then tr
 Layer 1: Physical Layer (1:05:51-1:06:06)
 
 The frames are converted into raw bits (electrical signals, light pulses, or radio waves) and sent over the physical medium (e.g., Ethernet cable, Wi-Fi) to your router.
+
 From Google Server to your Laptop (L1 to L7):
 
 Layer 1: Physical Layer (1:06:06-1:06:21)
-
 The Google server's physical layer receives the raw bits of your request and converts them into frames.
+
 Layer 2: Data Link Layer (1:06:21-1:06:36)
-
 The frames are processed, and the MAC address information is used to pass the data up to the next layer.
+
 Layer 3: Network Layer (1:06:36-1:06:51)
-
 The packets are examined, and the IP addresses are used to determine that the request is for the Google server. The response packets are then created.
+
 Layer 4: Transport Layer (1:06:51-1:07:05)
-
 The response packets are reassembled into segments, ensuring correct order and handling any missing data.
+
 Layer 5: Session Layer (1:07:05-1:07:19)
-
 The session that was established is used to manage the response data back to your browser.
+
 Layer 6: Presentation Layer (1:07:19-1:07:33)
-
 The received data (e.g., the Google homepage) is decrypted and formatted so your browser can understand it.
-Layer 7: Application Layer (1:07:33-1:07:47)
 
+Layer 7: Application Layer (1:07:33-1:07:47)
 Finally, your browser receives the processed data and displays the Google homepage, completing the interaction.
 
 
