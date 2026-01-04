@@ -160,10 +160,33 @@ What is [Elastic ip](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My
 **Create App LB**
 
 <img width="1847" height="612" alt="image" src="https://github.com/user-attachments/assets/a75a8c27-f62d-4d9f-948f-43ae491e6f70" />
+<img width="1798" height="640" alt="image" src="https://github.com/user-attachments/assets/1c7f275e-d3a0-47b4-af83-b38bd4d711d8" />
+<img width="1809" height="577" alt="image" src="https://github.com/user-attachments/assets/3e5ba171-de56-46e1-8b8b-5ee310500bde" />
+
+ - select public subnet, even if u put it in AWS it will throw an error
+<img width="1787" height="557" alt="image" src="https://github.com/user-attachments/assets/2bf7034b-aa7a-4e61-8399-76cb9c3accb7" />
+
+ - select SG, it will allow ssh connectivity and port 8000
+<img width="1769" height="615" alt="image" src="https://github.com/user-attachments/assets/47b2503b-50d3-45dc-b7f7-21cc859c33e6" />
+
+ - configure listeners, this is where we need to configure target groups.
+<img width="1727" height="683" alt="image" src="https://github.com/user-attachments/assets/b81340fa-ac40-4728-9c07-f7e9296ad046" />
 
 
+- select EC2 instance
+<img width="1840" height="878" alt="image" src="https://github.com/user-attachments/assets/e6a56497-5895-4379-909a-6fef7e272553" />
 
-s
+- we are using HTTP protocol, and application is listening on port 8000. so configure here accordingly
+<img width="1838" height="817" alt="image" src="https://github.com/user-attachments/assets/e7ed5305-a1e7-410c-aac0-999f51aecb16" />
+
+
+- Health checks
+<img width="1781" height="473" alt="image" src="https://github.com/user-attachments/assets/c420a89d-e52f-4d0d-b473-a923a59f85ea" />
+
+- register targets and include as pending below
+<img width="1850" height="535" alt="image" src="https://github.com/user-attachments/assets/1b6a7822-95d8-4dc3-9d48-4730d2009dcd" />
+<img width="1820" height="873" alt="image" src="https://github.com/user-attachments/assets/82c722ce-824b-4dfc-ad1c-cc2072860d48" />
+
 
 
 
