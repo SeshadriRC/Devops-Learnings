@@ -1,12 +1,12 @@
 - [My Practice](#my-practice)
 1. [AWS](#AWS)
 2. [Ansible](#ansible) 
-3 [Docker](#docker) 
-4 [Git](#git)
-5 [Jenkins](#jenkins)
-6 [Kubernetes](#kubernetes)
-7 [Linux](#linux)
-8 [Terraform](#terraform)
+3. [Docker](#docker) 
+4. [Git](#git)
+5. [Jenkins](#jenkins)
+6. [Kubernetes](#kubernetes)
+7. [Linux](#linux)
+8. [Terraform](#terraform)
   - [Azure](#azure)
 
 
