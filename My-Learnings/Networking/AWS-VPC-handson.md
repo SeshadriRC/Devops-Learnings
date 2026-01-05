@@ -16,6 +16,7 @@
 - Install python application on one ec2 instance
 - Create load balancer and add two ec2 instance as target group
 
+---
 
 - VPC creation
 <img width="461" height="576" alt="image" src="https://github.com/user-attachments/assets/e0d4eb31-2ec2-405e-863a-a0055ace070d" />
