@@ -28,10 +28,7 @@
 
 ## Docker
 
-- [Install Docker Packages](https://github.com/SeshadriRC/Devops/blob/main/Docker/Day%201%3A%20Install%20Docker%20Packages%20and%20Start%20Docker%20Service.md)
-- [Deploy nginx container](https://github.com/SeshadriRC/Devops/blob/main/Docker/Level-1/Day2%3A%20Deploy%20Nginx%20Container%20on%20Application%20Server.md)
-- [Delete docker container](https://github.com/SeshadriRC/Devops/blob/main/Docker/Level-1/Day3%3A%20Delete%20Docker%20Container.md)
-- [Copy File to Docker Container](https://github.com/SeshadriRC/Devops/blob/main/Docker/Level-1/Day4%3A%20Copy%20File%20to%20Docker%20Container.md) 
+- [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Docker/Level-1) 
 
 ## Git
 
