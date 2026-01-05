@@ -1,6 +1,6 @@
 - [My Practice](#my-practice)
-1 [AWS](#AWS)   
-2 [Ansible](#ansible) 
+1. [AWS](#AWS)
+2. [Ansible](#ansible) 
 3 [Docker](#docker) 
 4 [Git](#git)
 5 [Jenkins](#jenkins)
