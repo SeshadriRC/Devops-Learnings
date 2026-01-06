@@ -10,6 +10,8 @@ git branch -d <branch-name>
 
 # Reset-revert-restore
 
+[practicals](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Git/git-concepts/reset-revert-restore.md#git-reset-tutorial)
+
 - use ```git log --oneline``` to track it
   
 git restore
