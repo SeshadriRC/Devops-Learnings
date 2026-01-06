@@ -13,6 +13,8 @@ git branch -d <branch-name>
 
 ```
 git restore .
-git revert <commit-id>
+
+git revert <commit-id>, post that we need to give git push
+
 git reset
 ```
