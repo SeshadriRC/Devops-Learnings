@@ -32,10 +32,7 @@
 
 ## Git
 
- - [Setup git on storage server](https://github.com/SeshadriRC/Devops/blob/main/Git/Day1%3A%20Set%20Up%20Git%20Repository%20on%20Storage%20Server.md)
- - [Clone Git Repository on Storage Server](https://github.com/SeshadriRC/Devops/blob/main/Git/Level-1/Day2%3A%20Clone%20Git%20Repository%20on%20Storage%20Server.md)
- - [Fork a Git repository](https://github.com/SeshadriRC/Devops/blob/main/Git/Level-1/Day3%3A%20Fork%20a%20Git%20repository.md)
- - [Update Git Repository with Sample HTML File](https://github.com/SeshadriRC/Devops/blob/main/Git/Level-1/Day4%3A%20Update%20Git%20Repository%20with%20Sample%20HTML%20File.md)
+- [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Git/Level-1)
 
 ## Jenkins
 - [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Jenkins/Practicals/Level-1)
