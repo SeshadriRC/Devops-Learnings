@@ -5,4 +5,5 @@
 # Delete-branch
 
 ```
+git branch -d <branch-name>
 ```
