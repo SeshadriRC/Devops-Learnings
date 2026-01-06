@@ -38,3 +38,24 @@ If you want, next I can give you:
 * 🔹 Or a **1-page cheat sheet** you can revise before interviews
 
 Just tell me 👍
+
+
+## git-reset tutorial
+
+--soft  → commit removed, changes staged
+--mixed → commit removed, changes unstaged
+--hard  → commit removed, changes gone
+
+
+### mixed
+
+<img width="749" height="774" alt="image" src="https://github.com/user-attachments/assets/05beb6af-cd28-4e5d-ad90-a0c4f463b236" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a24df271-2bd6-4de6-9d86-1efdeebdcac4" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/77b60812-c0d0-4f89-87ca-3c4198c574db" />
+
+### hard
+
+<img width="739" height="598" alt="image" src="https://github.com/user-attachments/assets/91a8f738-1b38-41e8-9d04-ee235385b845" />
+
