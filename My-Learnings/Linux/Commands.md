@@ -1,6 +1,7 @@
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
 - [openssl](#openssl)
+- [SSH](#ssh)
 - [User-management](#user-management)
 - [vi-editor](#vi-editor)
 - [Wget](#wget)
@@ -59,6 +60,14 @@ openssl req -x509 -new -nodes \
 openssl x509 -in server.crt -text -noout
 
 ```
+
+## SSH
+
+```
+ssh-keygen
+ssh-copy-id natasha@ststor01
+```
+
 
 ## Wget
 
