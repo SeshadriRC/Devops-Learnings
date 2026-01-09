@@ -1,4 +1,4 @@
-- [Volumes](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Kubernetes/Concepts/Volumes.md)
+- [Volumes](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Kubernetes/Concepts-Kodekoud/Volumes.md)
 - [Commands](#commands)
 - [Notes](#notes)
 - [Pending](#pending)
