@@ -1,6 +1,7 @@
 
 - [SSH](#ssh)
 - [VPC](#vpc)
+- [Elastic=ip](#elastic-ip)
 
 
 # SSH
@@ -26,4 +27,10 @@ aws ec2 describe-vpcs --query "Vpcs[].VpcId" --output table
 aws ec2 describe-vpcs \
   --query "Vpcs[].{VpcId:VpcId, Name:Tags[?Key=='Name'].Value | [0]}" \
   --output table
+```
+
+# Elastic IP
+
+```
+aws ec2 describe-addresses --output table
 ```
