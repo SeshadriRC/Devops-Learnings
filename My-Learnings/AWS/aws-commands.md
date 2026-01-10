@@ -1,7 +1,7 @@
 
 - [SSH](#ssh)
 - [VPC](#vpc)
-- [Elastic=ip](#elastic-ip)
+- [Elastic-ip](#elastic-ip)
 
 
 # SSH
