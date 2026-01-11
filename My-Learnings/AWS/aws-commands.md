@@ -2,6 +2,7 @@
 - [SSH](#ssh)
 - [VPC](#vpc)
 - [Elastic-ip](#elastic-ip)
+- [EC2](#ec2)
 
 
 # SSH
@@ -33,4 +34,12 @@ aws ec2 describe-vpcs \
 
 ```
 aws ec2 describe-addresses --output table
+```
+
+# EC2
+
+```
+aws ec2 describe-instances \
+  --query "Reservations[*].Instances[*].[InstanceId, Tags[?Key=='Name'].Value | [0]]" \
+  --output table
 ```
