@@ -63,6 +63,7 @@ openssl x509 -in server.crt -text -noout
 
 ## SSH
 
+[SSH](https://github.com/SeshadriRC/Devops-Learnings/blob/main/My-Learnings/Linux/Concepts/ssh-key-gen.md)
 ```
 ssh-keygen
 ssh-copy-id natasha@ststor01
