@@ -1,4 +1,11 @@
-# Syntax check
+
+- [syntax-check](#syntax-check)
+- [Dry-run](#dry-run)
+
+
+
+
+# Syntax-check
 
 ```
 ansible-playbook -i /home/thor/ansible/inventory-t2q6 \
