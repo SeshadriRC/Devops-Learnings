@@ -48,7 +48,10 @@ docker.io/library/busybox:musl
 # tag
 
 ```
+docker tag <oldimage-name:tag>  <image-name:tag>
 [tony@stapp01 ~]$ docker tag busybox:musl busybox:local
+
+- below we can notice that imageid will be same
 
 [tony@stapp01 ~]$ docker images
 REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
