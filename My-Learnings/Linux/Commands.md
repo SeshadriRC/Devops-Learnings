@@ -1,4 +1,6 @@
 - [cd](#cd)
+- [ls](#ls)
+****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
 - [openssl](#openssl)
@@ -15,6 +17,13 @@
 cd <dir-name>     
 cd ..           -> one step back
 cd ../../       -> two step back
+```
+
+## ls
+
+```
+ls
+ls -lrth
 ```
 
 ## Get-ent
