@@ -5,6 +5,8 @@
 - [mkdir](#mkdir)
 - [cat](#cat)
 - [free](#free)
+- [nproc](#nproc)
+- [top](#top)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -14,6 +16,17 @@
 - [Wget](#wget)
 - [Yum](#yum)
 
+## top
+
+```
+top                    --> it will show all memory, cpu and disk
+```
+
+## nproc
+
+```
+nproc
+```
 
 ## free
 
