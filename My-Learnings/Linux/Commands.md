@@ -1,6 +1,9 @@
 - [cd](#cd)
 - [ls](#ls)
 - [vi-editor](#vi-editor)
+- [touch](#touch)
+- [mkdir](#mkdir)
+- [cat](#cat)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -10,6 +13,23 @@
 - [Wget](#wget)
 - [Yum](#yum)
 
+## cat
+
+```
+cat <file-name>
+```
+
+## mkdir
+
+```
+mkdir <dir-name>
+```
+
+## touch
+
+```
+touch <file-name>
+```
 
 ## cd
 
