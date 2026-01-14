@@ -1,12 +1,12 @@
 - [cd](#cd)
 - [ls](#ls)
+- [vi-editor](#vi-editor)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
 - [openssl](#openssl)
 - [SSH](#ssh)
 - [User-management](#user-management)
-- [vi-editor](#vi-editor)
 - [Wget](#wget)
 - [Yum](#yum)
 
@@ -190,3 +190,10 @@ p
 shift+$ - move to end of the line
 ```
 
+- undo the changes
+
+```
+in escape mode , type u
+
+u
+```
