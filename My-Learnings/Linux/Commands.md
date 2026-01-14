@@ -12,9 +12,9 @@
 ## cd
 
 ```
-cd <dir-name>
-cd ..
-cd ../../
+cd <dir-name>     
+cd ..           -> one step back
+cd ../../       -> two step back
 ```
 
 ## Get-ent
