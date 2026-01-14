@@ -89,6 +89,13 @@ yum install jenkins
 yum provides */nslookup       -> it will check whether nslookup is in which package 
 ```
 
+- To check the installed packages
+
+```
+rpm -qa | grep git
+yum list --installed | grep git
+```
+
 ## User-management
 
 - User creation
