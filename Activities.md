@@ -34,6 +34,7 @@
 ## Git
 
 - [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Git/Level-1)
+- [Level-2](https://github.com/SeshadriRC/Devops/tree/main/Git/Level-2)
 
 ## Jenkins
 - [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Jenkins/Practicals/Level-1)
