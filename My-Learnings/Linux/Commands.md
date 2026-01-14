@@ -1,3 +1,4 @@
+- [cd](#cd)
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
 - [openssl](#openssl)
@@ -7,6 +8,14 @@
 - [Wget](#wget)
 - [Yum](#yum)
 
+
+## cd
+
+```
+cd <dir-name>
+cd ..
+cd ../../
+```
 
 ## Get-ent
 
