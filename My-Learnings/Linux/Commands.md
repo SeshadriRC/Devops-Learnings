@@ -197,3 +197,9 @@ in escape mode , type u
 
 u
 ```
+
+- redo
+
+```
+ctrl+r
+```
