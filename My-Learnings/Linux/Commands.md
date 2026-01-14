@@ -4,6 +4,7 @@
 - [touch](#touch)
 - [mkdir](#mkdir)
 - [cat](#cat)
+- [free](#free)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -12,6 +13,14 @@
 - [User-management](#user-management)
 - [Wget](#wget)
 - [Yum](#yum)
+
+
+## free
+
+```
+free -h
+free -m
+```
 
 ## cat
 
