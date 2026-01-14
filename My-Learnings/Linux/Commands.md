@@ -1,4 +1,5 @@
 - [cd](#cd)
+- [chmod](#chmod)
 - [ls](#ls)
 - [vi-editor](#vi-editor)
 - [touch](#touch)
@@ -15,6 +16,15 @@
 - [User-management](#user-management)
 - [Wget](#wget)
 - [Yum](#yum)
+
+
+## chmod
+
+[chmod](https://github.com/SeshadriRC/Devops-Learnings/blob/main/Linux/Concepts/chmod.md)
+
+```
+chmod 755 <file.txt>
+```
 
 ## top
 
