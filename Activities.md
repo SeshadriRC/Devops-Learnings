@@ -38,6 +38,7 @@
 
 ## Jenkins
 - [Level-1](https://github.com/SeshadriRC/Devops/tree/main/Jenkins/Practicals/Level-1)
+- [Level-2](https://github.com/SeshadriRC/Devops/tree/main/Jenkins/Practicals/Level-2)
 
 
 ## Kubernetes
