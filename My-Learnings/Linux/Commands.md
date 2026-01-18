@@ -24,7 +24,7 @@
 - [Yum](#yum)
 
 
-## if-else
+## if else
 
 [if-else](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#if-else)
 
