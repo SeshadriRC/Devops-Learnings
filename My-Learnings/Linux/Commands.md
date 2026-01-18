@@ -13,6 +13,7 @@
 - [awk](#awk)
 - [curl](#curl)
 - [wget](#wget)
+- [if else](if-else)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -22,6 +23,10 @@
 - [Wget](#wget)
 - [Yum](#yum)
 
+
+## if-else
+
+[if-else](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#if-else)
 
 ## wget
 
