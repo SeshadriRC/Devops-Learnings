@@ -16,6 +16,7 @@
 - [if-else](#if-else)
 - [for-loop](#for-loop)
 - [trap](#trap)
+- [jq](#jq)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -24,6 +25,10 @@
 - [User-management](#user-management)
 - [Wget](#wget)
 - [Yum](#yum)
+
+## jq
+
+[jq](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/AWS-project-shell-script.md#jq)
 
 ## trap
 
