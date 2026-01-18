@@ -42,6 +42,12 @@ set -x     -> debug mode
 set -e
 ```
 
+[link](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#set--o-pipefail)
+
+```
+set -o pipefail
+```
+
 
 ## chmod
 
