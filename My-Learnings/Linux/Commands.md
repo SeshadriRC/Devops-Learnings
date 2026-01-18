@@ -13,7 +13,7 @@
 - [awk](#awk)
 - [curl](#curl)
 - [wget](#wget)
-- [if else](if-else)
+- [if-else](if-else)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
