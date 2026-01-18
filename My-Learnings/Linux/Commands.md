@@ -61,6 +61,7 @@ mkdir <dir-name>
 
 ```
 touch <file-name>
+touch <file-name1> <file-name2>
 ```
 
 ## cd
