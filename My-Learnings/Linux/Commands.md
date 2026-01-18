@@ -37,6 +37,12 @@ ps -ef | grep "amazon"
 set -x     -> debug mode
 ```
 
+[link](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#set--e)
+```
+set -e
+```
+
+
 ## chmod
 
 [chmod](https://github.com/SeshadriRC/Devops-Learnings/blob/main/Linux/Concepts/chmod.md)
