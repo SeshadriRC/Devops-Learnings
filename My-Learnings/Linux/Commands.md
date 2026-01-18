@@ -8,6 +8,9 @@
 - [free](#free)
 - [nproc](#nproc)
 - [top](#top)
+- [set](#set)
+- [ps](#ps)
+- [awk](#awk)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -17,6 +20,22 @@
 - [Wget](#wget)
 - [Yum](#yum)
 
+## awk
+
+[awk](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#awk)
+
+## ps
+
+```
+ps -ef
+ps -ef | grep "amazon"
+```
+
+## set
+
+```
+set -x     -> debug mode
+```
 
 ## chmod
 
