@@ -15,6 +15,7 @@
 - [wget](#wget)
 - [if-else](#if-else)
 - [for-loop](#for-loop)
+- [trap](#trap)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -23,6 +24,15 @@
 - [User-management](#user-management)
 - [Wget](#wget)
 - [Yum](#yum)
+
+## trap
+
+[trap](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#trap-signals)
+
+```
+trap 'commands' SIGNAL
+```
+
 
 ## for-loop
 
