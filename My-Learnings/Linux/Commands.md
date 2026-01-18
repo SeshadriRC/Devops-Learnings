@@ -11,6 +11,7 @@
 - [set](#set)
 - [ps](#ps)
 - [awk](#awk)
+- [curl](#curl)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -19,6 +20,15 @@
 - [User-management](#user-management)
 - [Wget](#wget)
 - [Yum](#yum)
+
+
+## curl
+
+[curl](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#curl)
+
+```
+curl -X GET googl.com
+```
 
 ## awk
 
