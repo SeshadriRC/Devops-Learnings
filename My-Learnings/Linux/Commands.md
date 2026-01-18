@@ -12,6 +12,7 @@
 - [ps](#ps)
 - [awk](#awk)
 - [curl](#curl)
+- [wget](#wget)
 ****
 - [get-ent](#get-ent)
 - [nslookup](#nslookup)
@@ -21,6 +22,14 @@
 - [Wget](#wget)
 - [Yum](#yum)
 
+
+## wget
+
+[wget](https://github.com/SeshadriRC/Devops-Concepts/blob/main/DevOps-Fundamentals-Core-Tooling/Shell-scripting-part2.md#wget)
+
+```
+wget https://google.com
+```
 
 ## curl
 
